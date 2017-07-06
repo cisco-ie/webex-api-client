@@ -1,0 +1,44 @@
+{
+  "name": "webex-api-client",
+  "version": "0.0.0",
+  "description": "My sensational module",
+  "license": "MIT",
+  "repository": "brh55/webex-api-client",
+  "author": {
+    "name": "brh55",
+    "email": "brandonhim@live.com",
+    "url": "github.com/cisco-ie/webex-api-client"
+  },
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && nyc ava"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    ""
+  ],
+  "dependencies": {
+    "meow": "^3.7.0",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "coveralls": "^2.11.12",
+    "nyc": "^10.0.0",
+    "xo": "^0.17.0"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  }
+}
