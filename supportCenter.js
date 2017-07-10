@@ -4,9 +4,6 @@ const xmlBuilder = require('./libs/xmlBuilder')('supportCenter');
 
 module.exports = (elements) => {
 
-	//console.log(JSON.stringify(tabsList)+" "+JSON.stringify(enable));
-
-	//const convertedList = elements;
 	if(elements.orderTabs.length>4){
 		throw new Error(`Max 4 tabs allowed in orderTabs`);
 	}
