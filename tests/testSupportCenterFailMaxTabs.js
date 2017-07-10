@@ -3,13 +3,6 @@ import supportCenter from '../supportCenter';
 
 test('Valid throw error', t => {
 
-	/*const elements = {
-		orderTabs : [{"tab":["Title","Great"]}],
-		serviceDesk : {enable:"True"}
-	}*/
-
-	//const elements = {"supportCenter":{"orderTabs":[{"tab":["Title","Great"]}],"serviceDesk":[{"enable":["True"]}]}}
-
 	const elements = {
 		orderTabs : ["Tools","Desktop","Application","session","Period"],
 		serviceDesk : true

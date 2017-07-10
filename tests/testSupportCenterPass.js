@@ -3,8 +3,6 @@ import supportCenter from '../supportCenter';
 
 test('Support Center', t => {
 
-	//const elements = {"supportCenter":{"orderTabs":[{"tab":["Title","Great"]}],"serviceDesk":[{"enable":["True"]}]}}
-
 	const elements = {
 		orderTabs : ["Tools","Desktop","Application"],
 		serviceDesk : true
