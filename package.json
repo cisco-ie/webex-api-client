@@ -29,6 +29,7 @@
     "lodash.has": "^4.5.2",
     "lodash.mapkeys": "^4.6.0",
     "meow": "^3.7.0",
+    "moment": "^2.18.1",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
