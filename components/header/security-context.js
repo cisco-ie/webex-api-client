@@ -4,8 +4,8 @@
 // create note about passwords in clear text should be done through HTTPS
 // LINK: https://developer.cisco.com/site/webex-developer/develop-test/xml-api/api-guide/#global-request-elements-in-security-context
 
-const xmlBuilder = require('../../libs/xmlBuilder')('securityContext');
 const mapKeys = require('lodash.mapkeys');
+const xmlBuilder = require('../../libs/xml-builder')('securityContext');
 
 /**
  * Generates the security context XML
@@ -16,7 +16,7 @@ const mapKeys = require('lodash.mapkeys');
  * @param  {string} elements.partnerID
  * @return {string}            xml <securityContext> string
  */
-module.exports = (elements) => {
+module.exports = elements => {
 	const eCopy = mapKeys(elements, (v, k) => k.toLowerCase());
 
 	// Throw error if one of the two don't exists

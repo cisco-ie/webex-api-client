@@ -1,9 +1,7 @@
 // Per Schema all elements are optional
-const xmlBuilder = require('../../libs/xmlBuilder')('schedule');
-const mapKeys = require('lodash.mapkeys');
-const toTime = require('../../libs/toWebExTime');
-const validate = require('../../libs/validate');
-const VALIDTONES = require('../../constants/entryExitTone');
+const xmlBuilder = require('../../libs/xml-builder')('schedule');
+const toTime = require('../../libs/to-webex-time');
+const VALIDTONES = require('../../constants/entry-exit-tone');
 
 /**
  * Creates a schedule XML
@@ -13,24 +11,33 @@ const VALIDTONES = require('../../constants/entryExitTone');
  * @param  {Number} elements.openTime
  * @param  {String} elements.hostWebExID
  * @param  {String} elements.entryExitTone
- * @param  {Object} elements
- * @param  {Object} elements
- * @param  {Object} elements
+ * @param  {String} elements.extURL
+ * @param  {Number} elements.extNotifyTime
+ * @param  {String} elements.joinNotifyURL
+ * @param  {Bool} elements.joinTeleconfBeforeHost
+ * @param  {Bool} elements.timeZoneID
+ * @param  {Bool} elements.timeZone
+ * @param  {String} elements.showFilePath
+ * @param  {Bool} elements.showFileStartMode
+ * @param  {Bool} elements.showFileContPlayFlag
+ * @param  {Number} elements.showFileInterVal
+ * @param  {Bool} elements.firstAttendeeAsPresenter
  *
  * @return {[type]}          [description]
  */
-module.exports = (elements) => {
-  const eCopy = Object.assign({}, elements);
-  if (elements.startDate || elements.startdate) {
-    eCopy.startDate = toTime(elements.startDate);
-  }
+module.exports = elements => {
+	const eCopy = Object.assign({}, elements);
 
-  if (elements.entryExitTone) {
-    const invalidTone = VALIDTONES.indexOf(elements.entryExitTone) === -1;
-    if (invalidTone) {
-      throw new Error(`Invalid entryExitTone, expected [${VALIDTONES.toString().replace(/,/g, ', ')}]`);
-    }
-  }
+	if (elements.startDate) {
+		eCopy.startDate = toTime(elements.startDate);
+	}
 
-  return xmlBuilder.buildObject(eCopy);
-}
+	if (elements.entryExitTone) {
+		const invalidTone = VALIDTONES.indexOf(elements.entryExitTone) === -1;
+		if (invalidTone) {
+			throw new Error(`Invalid entryExitTone, expected [${VALIDTONES.toString().replace(/,/g, ', ')}]`);
+		}
+	}
+
+	return xmlBuilder.buildObject(eCopy);
+};
