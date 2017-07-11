@@ -1,1 +1,1 @@
-module.exports = ["PUBLIC", "PRIVATE", "UNLISTED"];
+module.exports = ['PUBLIC', 'PRIVATE', 'UNLISTED'];

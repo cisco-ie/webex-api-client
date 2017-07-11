@@ -2,6 +2,7 @@
 const xmlBuilder = require('../../libs/xml-builder')('schedule');
 const toTime = require('../../libs/to-webex-time');
 const VALIDTONES = require('../../constants/entry-exit-tone');
+const validType = require('../../libs/valid-type');
 
 /**
  * Creates a schedule XML
@@ -33,10 +34,7 @@ module.exports = elements => {
 	}
 
 	if (elements.entryExitTone) {
-		const invalidTone = VALIDTONES.indexOf(elements.entryExitTone) === -1;
-		if (invalidTone) {
-			throw new Error(`Invalid entryExitTone, expected [${VALIDTONES.toString().replace(/,/g, ', ')}]`);
-		}
+		validType(VALIDTONES, elements.entryExitTone);
 	}
 
 	return xmlBuilder.buildObject(eCopy);

@@ -1,1 +1,1 @@
-module.exports = ["FULL", "CLOSED", "WAITLIST", "REGISTER"];
+module.exports = ['FULL', 'CLOSED', 'WAITLIST', 'REGISTER'];

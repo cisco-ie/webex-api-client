@@ -1,1 +1,1 @@
-module.exports = ["REGISTER", "INVITE", "REJECT", "ACCEPT"];
+module.exports = ['REGISTER', 'INVITE', 'REJECT', 'ACCEPT'];

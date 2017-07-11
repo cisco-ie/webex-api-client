@@ -1,7 +1,9 @@
 // Per Schema all elements are optional
 const xmlBuilder = require('../../libs/xml-builder')('accessControl');
-const toTime = require('../../libs/to-webex-time');
-const VALIDSTATUS = require('../../constants/list-status');
+const validType = require('../../libs/valid-type');
+const LISTSTATUS = require('../../constants/list-status');
+const JOINSTATUS = require('../../constants/join-status');
+const REGSTATUS = require('../../constants/registration-status');
 
 /**
  * Creates a schedule XML
@@ -25,15 +27,28 @@ const VALIDSTATUS = require('../../constants/list-status');
 module.exports = elements => {
 	const eCopy = Object.assign({}, elements);
 
-	if (elements.startDate) {
-		eCopy.startDate = toTime(elements.startDate);
+	if (elements.sessionPassword) {
+		if (elements.length > 16) {
+			throw new Error('Expected elements.sessionPassword to be shorter than 16 characters.');
+		}
+	}
+
+	if (elements.audioPassword) {
+		if (elements.audioPassword > 16) {
+			throw new Error('Expected elements.audioPassword to be shorter than 16 characters.');
+		}
 	}
 
 	if (elements.listStatus) {
-		const invalidStatus = VALIDSTATUS.indexOf(elements.listStatus) === -1;
-		if (invalidStatus) {
-			throw new Error(`Invalid listStatus, expected [${VALIDSTATUS.toString().replace(/,/g, ', ')}]`);
-		}
+		validType(LISTSTATUS, elements.listStatus);
+	}
+
+	if (elements.joinStatus) {
+		validType(JOINSTATUS, elements.joinStatus);
+	}
+
+	if (elements.registrationStatus) {
+		validType(REGSTATUS, elements.registrationStatus);
 	}
 
 	return xmlBuilder.buildObject(eCopy);
