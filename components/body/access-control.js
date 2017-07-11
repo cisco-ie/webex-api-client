@@ -43,7 +43,7 @@ module.exports = elements => {
 
 	if (elements.audioPassword) {
 		if (elements.audioPassword.length > 16) {
-			throw new Error('Expected elements.audioPassword to be shorter than 16 characters.');
+			throw new Error('Expected elements.audioPassword to be shorter than 16 characters');
 		}
 	}
 

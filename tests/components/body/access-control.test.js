@@ -5,6 +5,7 @@ const LONGPASSWORDMOCK = 'asjdlkasjdklaiowqdjoiqwdlkawndlkansdasdjasjdklasjdlkas
 
 test('Validate sessionPassword', t => {
 	const error = t.throws(() => accessControl({
+		registration: true,
 		sessionPassword: LONGPASSWORDMOCK
 	}));
 
@@ -13,6 +14,7 @@ test('Validate sessionPassword', t => {
 
 test('Validate audioPassword', t => {
 	const error = t.throws(() => accessControl({
+		registration: true,
 		audioPassword: LONGPASSWORDMOCK
 	}));
 
@@ -26,19 +28,17 @@ test('Access Control Test', t => {
 		registration: true,
 		passwordReq: true,
 		isRegisterIDRequired: true,
-		joinStatus: '111',
 		registrationStatus: 'FULL'
 	};
 
-	// Copy over valid, but add invalid settings with it
-	const invalidSettings = Object.assign({}, validSettings, {joinStatus: '111'});
-	const validXML = '<schedule><startDate>05/31/2004 10:10:10</startDate><entryExitTone>BEEP</entryExitTone><duration>20</duration><joinTeleconfBeforeHost>true</joinTeleconfBeforeHost><openTime>900</openTime><timeZoneID>4</timeZoneID></schedule>';
+	const validXML = '<accessControl><sessionPassword>1234523</sessionPassword><listStatus>PUBLIC</listStatus><registration>true</registration><passwordReq>true</passwordReq><isRegisterIDRequired>true</isRegisterIDRequired><registrationStatus>FULL</registrationStatus></accessControl>';
 	t.is(accessControl(validSettings), validXML);
 
+	// Additional Error Checks
+	const invalidSettings = Object.assign({}, validSettings, {joinStatus: '111'});
 	const error = t.throws(() => accessControl(invalidSettings));
 	t.is(error.message, 'Expected a valid type (REGISTER, INVITE, REJECT, ACCEPT), received 111');
 
-	const missingReq = Object.assign({}, validSettings, {registration: ''});
-	const errorReq = t.throws(() => accessControl(missingReq));
+	const errorReq = t.throws(() => accessControl({}));
 	t.is(errorReq.message, 'Missing required keys: registration');
 });
