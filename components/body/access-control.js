@@ -1,6 +1,7 @@
 // Per Schema all elements are optional
 const xmlBuilder = require('../../libs/xml-builder')('accessControl');
 const validType = require('../../libs/valid-type');
+const validate = require('../../libs/validate');
 const LISTSTATUS = require('../../constants/list-status');
 const JOINSTATUS = require('../../constants/join-status');
 const REGSTATUS = require('../../constants/registration-status');
@@ -25,16 +26,23 @@ const REGSTATUS = require('../../constants/registration-status');
  * @return {String}          accessControl XML
  */
 module.exports = elements => {
-	const eCopy = Object.assign({}, elements);
+	validate(elements, ['registration']);
+
+	let eCopy = Object.assign({}, elements);
+
+	if (!elements.listStatus) {
+		// set to default public
+		eCopy = Object.assign({}, {listStatus: LISTSTATUS[0]});
+	}
 
 	if (elements.sessionPassword) {
-		if (elements.length > 16) {
-			throw new Error('Expected elements.sessionPassword to be shorter than 16 characters.');
+		if (elements.sessionPassword.length > 16) {
+			throw new Error('Expected elements.sessionPassword to be shorter than 16 characters');
 		}
 	}
 
 	if (elements.audioPassword) {
-		if (elements.audioPassword > 16) {
+		if (elements.audioPassword.length > 16) {
 			throw new Error('Expected elements.audioPassword to be shorter than 16 characters.');
 		}
 	}
