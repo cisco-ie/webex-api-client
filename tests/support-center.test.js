@@ -17,7 +17,7 @@ test('Valid throw tabs error', t => {
 		serviceDesk: 'True'
 	};
 	const result = t.throws(() => supportCenter(elements));
-	t.is(result.message, `Expected serviceDesk value: boolean, Received: ` + typeof (elements.serviceDesk));
+	t.is(result.message, `Expected serviceDesk to be of type boolean, received ${typeof (elements.serviceDesk)}`);
 });
 
 test('Valid throw boolean error', t => {
@@ -26,5 +26,5 @@ test('Valid throw boolean error', t => {
 		serviceDesk: true
 	};
 	const result = t.throws(() => supportCenter(elements));
-	t.is(result.message, `Expected number of tabs : 4, Received ` + elements.orderTabs.length);
+	t.is(result.message, `Expected maximum number of tabs to be 4, received ${elements.orderTabs.length}`);
 });

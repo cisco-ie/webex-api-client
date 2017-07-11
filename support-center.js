@@ -11,10 +11,10 @@ const xmlBuilder = require('./libs/xml-builder')('supportCenter');
  */
 module.exports = elements => {
 	if (elements.orderTabs.length > 4) {
-		throw new Error(`Expected number of tabs : 4, Received ` + elements.orderTabs.length);
+		throw new Error(`Expected maximum number of tabs to be 4, received ${elements.orderTabs.length}`);
 	}
 	if (typeof (elements.serviceDesk) !== 'boolean') {
-		throw new Error(`Expected serviceDesk value: boolean, Received: ` + typeof (elements.serviceDesk));
+		throw new Error(`Expected serviceDesk to be of type boolean, received ${typeof (elements.serviceDesk)}`);
 	}
 	const resultList = {
 		orderTabs:
