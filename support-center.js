@@ -2,6 +2,13 @@
 
 const xmlBuilder = require('./libs/xml-builder')('supportCenter');
 
+/**
+ * Generates the support center XML
+ * @param {object} elements
+ * @param {list} elements.orderTabs
+ * @param {boolean} elements.serviceDesk
+ * @return {string} xml <supportCenter> string
+ */
 module.exports = elements => {
 	if (elements.orderTabs.length > 4) {
 		throw new Error(`Expected number of tabs : 4, Received ` + elements.orderTabs.length);
