@@ -14,12 +14,3 @@ test('Schedule XML', t => {
 
 	t.is(scheduleXML, validSchedule);
 });
-
-test('Entry Exit Tone Error', t => {
-	const scheduleError = t.throws(() => schedule({
-		startDate: new Date(2004, 4, 31, 10, 10, 10),
-		entryExitTone: '1'
-	}));
-
-	t.is(scheduleError.message, 'Invalid entryExitTone, expected [BEEP, NOTONE, ANNOUNCENAME]');
-});
