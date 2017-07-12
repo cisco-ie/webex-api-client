@@ -6,16 +6,18 @@ import mock from './mocks/create-meeting.js'
 
 const TESTURL = 'https://test.com';
 
-nock(TESTURL)
-	.post('/', mock)
+var scope = nock(TESTURL)
+	.post('/webex', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><serv:message><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent><body><metaData><confName>Sample Meeting</confName><meetingType>1</meetingType><agenda>Test</agenda></metaData><participants><name>James Kirk</name><email>JKirk@sz.webex.com</email></participants><schedule><startDate>05/31/2004 10:10:10</startDate><openTime>900</openTime><joinTeleconfBeforeHost>true</joinTeleconfBeforeHost><duration>20</duration><timezoneID>4</timezoneID></schedule></body></bodyContent></body></serv:message>')
 	.reply(200, 'Success');
 
 test('Create Meeting', t => {
+	t.plan(1);
+
 	const webex = new Client({
 		webExID: 'testuser',
 		password: 'password123',
 		siteId: 'tester'
-	}, TESTURL);
+	}, TESTURL + '/webex');
 
 	webex
 		.metaData({
@@ -39,7 +41,8 @@ test('Create Meeting', t => {
 		.createMeeting()
 		.then(resp => {
 			console.log(resp)
-		});
+		})
+		.catch(err => console.log(err))
 
 });
 
