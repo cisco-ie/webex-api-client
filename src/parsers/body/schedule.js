@@ -1,8 +1,7 @@
 // Per Schema all elements are optional
-const xmlBuilder = require('../../libs/xml-builder')('schedule');
-const toTime = require('../../libs/to-webex-time');
+const toTime = require('../../helpers/to-webex-time');
 const VALIDTONES = require('../../constants/entry-exit-tone');
-const validType = require('../../libs/valid-type');
+const validType = require('../../helpers/valid-type');
 
 /**
  * Creates a schedule XML
@@ -27,15 +26,15 @@ const validType = require('../../libs/valid-type');
  * @return {[type]}          [description]
  */
 module.exports = elements => {
-	const eCopy = Object.assign({}, elements);
+	let elCopy = Object.assign({}, elements);
 
 	if (elements.startDate) {
-		eCopy.startDate = toTime(elements.startDate);
+		elCopy.startDate = toTime(elements.startDate);
 	}
 
 	if (elements.entryExitTone) {
 		validType(VALIDTONES, elements.entryExitTone);
 	}
 
-	return xmlBuilder.buildObject(eCopy);
+	return elCopy;
 };

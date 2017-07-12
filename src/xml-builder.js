@@ -3,7 +3,7 @@ const xml2js = require('xml2js');
 
 module.exports = rootName => {
 	return new xml2js.Builder({
-		headless: true,
+		headless: false,
 		renderOpts: {
 			pretty: false
 		},

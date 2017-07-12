@@ -5,7 +5,6 @@
 // LINK: https://developer.cisco.com/site/webex-developer/develop-test/xml-api/api-guide/#global-request-elements-in-security-context
 
 const mapKeys = require('lodash.mapkeys');
-const xmlBuilder = require('../../libs/xml-builder')('securityContext');
 
 /**
  * Generates the security context XML
@@ -32,5 +31,5 @@ module.exports = elements => {
 		throw new Error('Missing required keys: password or sessionTicket');
 	}
 
-	return xmlBuilder.buildObject(elements);
+	return elements;
 };

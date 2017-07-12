@@ -1,7 +1,6 @@
 // Per Schema all elements are optional
-const xmlBuilder = require('../../libs/xml-builder')('accessControl');
-const validType = require('../../libs/valid-type');
-const validate = require('../../libs/validate');
+const validType = require('../../helpers/valid-type');
+const validate = require('../../helpers/validate');
 const LISTSTATUS = require('../../constants/list-status');
 const JOINSTATUS = require('../../constants/join-status');
 const REGSTATUS = require('../../constants/registration-status');
