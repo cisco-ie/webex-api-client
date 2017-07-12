@@ -33,6 +33,7 @@
     "lodash.mapkeys": "^4.6.0",
     "meow": "^3.7.0",
     "moment": "^2.18.1",
+    "request": "^2.81.0",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {

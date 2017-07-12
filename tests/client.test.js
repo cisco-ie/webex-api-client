@@ -6,9 +6,11 @@ import mock from './mocks/create-meeting.js'
 
 const TESTURL = 'https://test.com';
 
-var scope = nock(TESTURL)
+nock('https://test.com')
 	.post('/webex', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><serv:message><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent><body><metaData><confName>Sample Meeting</confName><meetingType>1</meetingType><agenda>Test</agenda></metaData><participants><name>James Kirk</name><email>JKirk@sz.webex.com</email></participants><schedule><startDate>05/31/2004 10:10:10</startDate><openTime>900</openTime><joinTeleconfBeforeHost>true</joinTeleconfBeforeHost><duration>20</duration><timezoneID>4</timezoneID></schedule></body></bodyContent></body></serv:message>')
-	.reply(200, 'Success');
+	.reply(200, '<Success />');
+
+// nock('http://localhost/path').post('').reply(200, 'hi');
 
 test('Create Meeting', t => {
 	t.plan(1);
@@ -40,10 +42,9 @@ test('Create Meeting', t => {
 		})
 		.createMeeting()
 		.then(resp => {
-			console.log(resp)
-		})
-		.catch(err => console.log(err))
-
+			console.log(resp);
+			t.is(resp, '<Success />')
+		});
 });
 
 	//
