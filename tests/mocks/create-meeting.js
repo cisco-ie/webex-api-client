@@ -29,5 +29,5 @@ module.exports = `<?xml version="1.0" encoding="ISO-8859-1"?>
       </body>
     </bodyContent>
   </body>
-</serv:message>`.replace(/(\r\n|\n|\r|\t|\s{2,})/gm,'');
+</serv:message>`.replace(/(\r\n|\n|\r|\t|\s{2,})/gm, '');
 // Remove tabs/spaces 2 or more/new line break

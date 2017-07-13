@@ -2,7 +2,7 @@ import test from 'ava';
 import nock from 'nock';
 
 import Client from '../src/client';
-import mock from './mocks/create-meeting.js';
+import mock from './mocks/create-meeting';
 
 const TESTURL = 'https://test.com';
 
@@ -30,9 +30,9 @@ test('Create Meeting', async t => {
 			})
 			.participants([
 				{
-						name: 'James Kirk',
-						email: 'JKirk@sz.webex.com'
-					}
+					name: 'James Kirk',
+					email: 'JKirk@sz.webex.com'
+				}
 			])
 			.schedule({
 				startDate: new Date(2004, 4, 31, 10, 10, 10),
@@ -44,7 +44,7 @@ test('Create Meeting', async t => {
 			.createMeeting();
 
 		t.is(resp, '<Success />');
-	} catch (e) {
-		console.log(e);
+	} catch (err) {
+		console.log(err);
 	}
 });

@@ -1,5 +1,5 @@
 import test from 'ava';
-import schedule from '../../../components/body/schedule';
+import schedule from '../../../src/parsers/body/schedule';
 
 test('Schedule XML', t => {
 	const validSchedule = '<schedule><startDate>05/31/2004 10:10:10</startDate><entryExitTone>BEEP</entryExitTone><duration>20</duration><joinTeleconfBeforeHost>true</joinTeleconfBeforeHost><openTime>900</openTime><timeZoneID>4</timeZoneID></schedule>';

@@ -1,5 +1,5 @@
 import test from 'ava';
-import securityContext from '../../../components/header/security-context';
+import securityContext from '../../../src/parsers/header/security-context';
 
 test('Ensure sitename/siteid and email/webexid', t => {
 	const errorSite = t.throws(() => securityContext({
