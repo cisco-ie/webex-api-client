@@ -1,5 +1,6 @@
 const xmlBuilder = require('./xml-builder')('serv:message');
 const parsers = require('./parsers/index');
+const WEBEXSERVICE = require('./constants/webex-services');
 
 module.exports = class XMLRequest {
 	constructor(creds, body) {
@@ -42,9 +43,16 @@ module.exports = class XMLRequest {
 		}
 	}
 
-	xml() {
+	xml(service) {
+		const desiredService = WEBEXSERVICE[service];
+		if (!desiredService) {
+			throw new Error('Not a valid WebEx Service')
+		}
 		const body = {
 			bodyContent: {
+				$: {
+					'xsi:type': desiredService
+				},
 				body: this.body
 			}
 		};

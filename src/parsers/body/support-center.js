@@ -16,18 +16,17 @@ module.exports = elements => {
 	if (typeof (elements.serviceDesk) !== 'boolean') {
 		throw new Error(`Expected serviceDesk to be of type boolean, received ${typeof (elements.serviceDesk)}`);
 	}
-	const resultList = {
-		orderTabs:
-		[
-			{
 
+	const resultList = {
+		orderTabs: [
+			{
 				tab: elements.orderTabs
 			}
 		],
-		serviceDesk:
-		{
+		serviceDesk: {
 			enable: elements.serviceDesk
 		}
 	};
-	return xmlBuilder.buildObject(resultList);
+
+	return resultList;
 };

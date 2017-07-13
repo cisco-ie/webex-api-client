@@ -34,15 +34,16 @@ module.exports = class client {
 	}
 
 	createMeeting(options) {
-		return this._send();
+		return this._send('CreateMeeting');
 	}
 
-	_build() {
-		this.xmlPayload = this.payloadObject.xml();
+	_build(service) {
+		this.xmlPayload = this.payloadObject.xml(service);
 	}
 
-	_send() {
-		this._build();
+	_send(service) {
+		this._build(service);
+
 		return fetch(this.url, {
 			method: 'POST',
 			headers: {
@@ -51,7 +52,7 @@ module.exports = class client {
 			body: this.xmlPayload
 		})
 		.then(checkStatus)
-		.then(r => r.text())
+		.then(r => r.text());
 	}
 }
 
