@@ -1,5 +1,5 @@
 import test from 'ava';
-import accessControl from '../../../components/body/access-control';
+import accessControl from '../../../src/parsers/body/access-control';
 
 const LONGPASSWORDMOCK = 'asjdlkasjdklaiowqdjoiqwdlkawndlkansdasdjasjdklasjdlkas';
 

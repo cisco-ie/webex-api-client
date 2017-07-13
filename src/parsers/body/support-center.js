@@ -1,13 +1,11 @@
 'use strict';
 
-const xmlBuilder = require('./libs/xml-builder')('supportCenter');
-
 /**
  * Generates the support center XML
  * @param {object} elements
  * @param {list} elements.orderTabs
  * @param {boolean} elements.serviceDesk
- * @return {string} xml <supportCenter> string
+ * @return {object} transformedElements
  */
 module.exports = elements => {
 	if (elements.orderTabs.length > 4) {
@@ -17,7 +15,7 @@ module.exports = elements => {
 		throw new Error(`Expected serviceDesk to be of type boolean, received ${typeof (elements.serviceDesk)}`);
 	}
 
-	const resultList = {
+	const transformedElements = {
 		orderTabs: [
 			{
 				tab: elements.orderTabs
@@ -28,5 +26,5 @@ module.exports = elements => {
 		}
 	};
 
-	return resultList;
+	return transformedElements;
 };

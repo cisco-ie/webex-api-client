@@ -27,11 +27,11 @@ const REGSTATUS = require('../../constants/registration-status');
 module.exports = elements => {
 	validate(elements, ['registration']);
 
-	let eCopy = Object.assign({}, elements);
+	let elCopy = Object.assign({}, elements);
 
 	if (!elements.listStatus) {
 		// set to default public
-		eCopy = Object.assign({}, {listStatus: LISTSTATUS[0]});
+		elCopy = Object.assign({}, {listStatus: LISTSTATUS[0]});
 	}
 
 	if (elements.sessionPassword) {
@@ -58,5 +58,5 @@ module.exports = elements => {
 		validType(REGSTATUS, elements.registrationStatus);
 	}
 
-	return xmlBuilder.buildObject(eCopy);
+	return elCopy;
 };

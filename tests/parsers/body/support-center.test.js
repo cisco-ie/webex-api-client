@@ -1,5 +1,5 @@
 import test from 'ava';
-import supportCenter from '../support-center';
+import supportCenter from '../../../src/parsers/body/support-center';
 
 test('Support Center', t => {
 	const elements = {

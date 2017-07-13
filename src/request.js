@@ -5,7 +5,7 @@ const WEBEXSERVICE = require('./constants/webex-services');
 module.exports = class XMLRequest {
 	constructor(creds, body) {
 		this.header = {
-				securityContext: parsers['securityContext'](creds)
+			securityContext: parsers.securityContext(creds)
 		};
 		this.body = body || {};
 	}
@@ -40,14 +40,15 @@ module.exports = class XMLRequest {
 		return {
 			header: this.header,
 			body: this.body
-		}
+		};
 	}
 
 	xml(service) {
 		const desiredService = WEBEXSERVICE[service];
 		if (!desiredService) {
-			throw new Error('Not a valid WebEx Service')
+			throw new Error('Not a valid WebEx Service');
 		}
+
 		const body = {
 			bodyContent: {
 				$: {
@@ -56,10 +57,12 @@ module.exports = class XMLRequest {
 				body: this.body
 			}
 		};
+
 		const xmlObj = {
 			header: this.header,
 			body
 		};
+
 		return xmlBuilder.buildObject(xmlObj);
 	}
-}
+};
