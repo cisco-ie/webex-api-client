@@ -7,8 +7,17 @@ test('Support Center', t => {
 		serviceDesk: true
 	};
 	const result = supportCenter(elements);
-	const expected = '<supportCenter><orderTabs><tab>Tools</tab><tab>Desktop</tab><tab>Application</tab></orderTabs><serviceDesk><enable>true</enable></serviceDesk></supportCenter>';
-	t.is(result, expected);
+	const expected = {
+		orderTabs: [
+			{
+				tab: ['Tools', 'Desktop', 'Application']
+			}
+		],
+		serviceDesk: {
+			enable: true
+		}
+	};
+	t.deepEqual(result, expected);
 });
 
 test('Valid throw tabs error', t => {

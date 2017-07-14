@@ -1,7 +1,7 @@
 import test from 'ava';
 import securityContext from '../../../src/parsers/header/security-context';
 
-test('Ensure sitename/siteid and email/webexid', t => {
+test('Ensure sitename/siteid and email/webexid checks', t => {
 	const errorSite = t.throws(() => securityContext({
 		nothing: 'here'
 	}));
@@ -17,14 +17,4 @@ test('Ensure sitename/siteid and email/webexid', t => {
 		email: 'test@test.com'
 	}));
 	t.is(errorCreds.message, 'Missing required keys: password or sessionTicket');
-});
-
-test('Build proper securityContext', t => {
-	const xml = securityContext({
-		siteID: 'test',
-		email: 'test@test.com',
-		password: '12345'
-	});
-
-	t.is(xml, '<securityContext><siteID>test</siteID><email>test@test.com</email><password>12345</password></securityContext>');
 });
