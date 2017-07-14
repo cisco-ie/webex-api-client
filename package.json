@@ -32,7 +32,6 @@
     "lodash.mapkeys": "^4.6.0",
     "lodash.pick": "^4.4.0",
     "moment": "^2.18.1",
-    "request": "^2.81.0",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
