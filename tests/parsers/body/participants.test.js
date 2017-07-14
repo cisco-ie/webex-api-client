@@ -48,3 +48,27 @@ test('Participants Parser', t => {
 		]
 	});
 });
+
+test('Validate joinStatus', t => {
+	const error = t.throws(() => participants({
+		attendees: [
+			{
+				email: 'cool@beans.com',
+				joinStatus: 'coolbeans'
+			}
+		]
+	}))
+	t.is(error.message, 'Expected a valid type (REGISTER, INVITE, REJECT, ACCEPT), received coolbeans');
+});
+
+test('Validate role', t => {
+	const error = t.throws(() => participants({
+		attendees: [
+			{
+				email: 'cool@beans.com',
+				role: 'governer'
+			}
+		]
+	}))
+	t.is(error.message, 'Expected a valid type (ATTENDEE, PRESENTER, HOST, LIMITED), received governer');
+});

@@ -1,4 +1,10 @@
 const pick = require('lodash.pick');
+const validType = require('../../helpers/valid-type');
+
+const ENUMS = require('../../constants/enum-types');
+const ROLES = ENUMS['role'];
+const PERSONTYPES = ENUMS['personType'];
+const JOINSTATUSES = ENUMS['joinStatus'];
 
 module.exports = elements => {
 	let elCopy = Object.assign({}, elements);
@@ -14,7 +20,20 @@ module.exports = elements => {
 			const person = pick(attendee, [
 				'email', 'name', 'firstName', 'lastName', 'title', 'company',
 				'webExId', 'address', 'phones', 'notes', 'url', 'type', 'sendReminder']);
+
+			if (person.type) {
+				validType(PERSONTYPES, person.type);
+			}
+
 			const misc = pick(attendee, ['contactID', 'joinStatus', 'role']);
+
+			if (misc.role) {
+				validType(ROLES, misc.role);
+			}
+
+			if (misc.joinStatus) {
+				validType(JOINSTATUSES, misc.joinStatus);
+			}
 			// { person }, contactID, joinStatus, role
 			const newAttendee = Object.assign({}, {person}, misc);
 

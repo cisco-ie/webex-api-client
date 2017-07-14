@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Generates the support center XML
  * @param {object} elements

@@ -1,9 +1,10 @@
 // Per Schema all elements are optional
 const validType = require('../../helpers/valid-type');
 const validate = require('../../helpers/validate');
-const LISTSTATUS = require('../../constants/list-status');
-const JOINSTATUS = require('../../constants/join-status');
-const REGSTATUS = require('../../constants/registration-status');
+const ENUMS = require('../../constants/enum-types');
+const LISTSTATUS = ENUMS['listStatus'];
+const JOINSTATUS = ENUMS['joinStatus'];
+const REGSTATUS = ENUMS['registrationStatus'];
 
 /**
  * Creates a schedule XML

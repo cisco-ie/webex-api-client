@@ -1,7 +1,8 @@
 // Per Schema all elements are optional
 const toTime = require('../../helpers/to-webex-time');
-const VALIDTONES = require('../../constants/entry-exit-tone');
+const ENUMS = require('../../constants/enum-types');
 const validType = require('../../helpers/valid-type');
+const ENTRYEXITTONES = ENUMS['entryExitTone'];
 
 /**
  * Creates a schedule XML
@@ -33,7 +34,7 @@ module.exports = elements => {
 	}
 
 	if (elements.entryExitTone) {
-		validType(VALIDTONES, elements.entryExitTone);
+		validType(ENTRYEXITTONES, elements.entryExitTone);
 	}
 
 	return elCopy;
