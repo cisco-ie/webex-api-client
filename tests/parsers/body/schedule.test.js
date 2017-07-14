@@ -12,7 +12,7 @@ test('Schedule XML', t => {
 	});
 
 	const expected = {
-		startDate: "05/31/2004 10:10:10",
+		startDate: '05/31/2004 10:10:10',
 		entryExitTone: 'BEEP',
 		duration: 20,
 		joinTeleconfBeforeHost: true,
@@ -26,4 +26,4 @@ test('Schedule XML', t => {
 test('Validate entryExitTone', t => {
 	const error = t.throws(() => schedule({entryExitTone: 'hi'}));
 	t.is(error.message, 'Expected a valid type (BEEP, NOTONE, ANNOUNCENAME), received hi');
-})
+});

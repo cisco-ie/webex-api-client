@@ -1,5 +1,4 @@
-// @TODO: Put into own module
-// Constants entry exit tone
+// @TODO: When https://github.com/cisco-ie/webex-enum-types is public, use this instead
 module.exports = {
 	addressType: ['PERSONAL', 'GLOBAL'],
 	entryExitTone: ['BEEP', 'NOTONE', 'ANNOUNCENAME'],

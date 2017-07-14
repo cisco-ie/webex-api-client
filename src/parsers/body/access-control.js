@@ -2,9 +2,10 @@
 const validType = require('../../helpers/valid-type');
 const validate = require('../../helpers/validate');
 const ENUMS = require('../../constants/enum-types');
-const LISTSTATUS = ENUMS['listStatus'];
-const JOINSTATUS = ENUMS['joinStatus'];
-const REGSTATUS = ENUMS['registrationStatus'];
+
+const LISTSTATUS = ENUMS.listStatus;
+const JOINSTATUS = ENUMS.joinStatus;
+const REGSTATUS = ENUMS.registrationStatus;
 
 /**
  * Creates a schedule XML

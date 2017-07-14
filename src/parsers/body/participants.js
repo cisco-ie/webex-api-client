@@ -1,10 +1,11 @@
-const pick = require('lodash.pick');
+// Unsure why eslint is not recogonizing this dep, ignoring rule for now
+const pick = require('lodash.pick'); // eslint-disable-line import/no-extraneous-dependencies
 const validType = require('../../helpers/valid-type');
-
 const ENUMS = require('../../constants/enum-types');
-const ROLES = ENUMS['role'];
-const PERSONTYPES = ENUMS['personType'];
-const JOINSTATUSES = ENUMS['joinStatus'];
+
+const ROLES = ENUMS.role;
+const PERSONTYPES = ENUMS.personType;
+const JOINSTATUSES = ENUMS.joinStatus;
 
 module.exports = elements => {
 	let elCopy = Object.assign({}, elements);

@@ -57,7 +57,7 @@ test('Validate joinStatus', t => {
 				joinStatus: 'coolbeans'
 			}
 		]
-	}))
+	}));
 	t.is(error.message, 'Expected a valid type (REGISTER, INVITE, REJECT, ACCEPT), received coolbeans');
 });
 
@@ -69,6 +69,6 @@ test('Validate role', t => {
 				role: 'governer'
 			}
 		]
-	}))
+	}));
 	t.is(error.message, 'Expected a valid type (ATTENDEE, PRESENTER, HOST, LIMITED), received governer');
 });

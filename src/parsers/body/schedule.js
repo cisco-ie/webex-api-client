@@ -2,7 +2,8 @@
 const toTime = require('../../helpers/to-webex-time');
 const ENUMS = require('../../constants/enum-types');
 const validType = require('../../helpers/valid-type');
-const ENTRYEXITTONES = ENUMS['entryExitTone'];
+
+const ENTRYEXITTONES = ENUMS.entryExitTone;
 
 /**
  * Creates a schedule XML
@@ -24,7 +25,7 @@ const ENTRYEXITTONES = ENUMS['entryExitTone'];
  * @param  {Number} elements.showFileInterVal
  * @param  {Bool} elements.firstAttendeeAsPresenter
  *
- * @return {[type]}          [description]
+ * @return {Object}          Parsed schedule object
  */
 module.exports = elements => {
 	let elCopy = Object.assign({}, elements);
