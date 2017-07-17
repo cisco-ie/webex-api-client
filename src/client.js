@@ -1,67 +1,83 @@
 const fetch = require('isomorphic-fetch');
-const XMLRequest = require('./request');
+const XMLRequest = require('./xml-request');
+const checkStatus = require('./helpers/check-status');
 
-module.exports = class Client {
-	constructor(creds, url) {
-		this.payloadObject = new XMLRequest(creds);
-		this.url = url;
-	}
-
-	_setPayload(data) {
-		this.payloadObject.append(data);
-		return this;
+class Client {
+	constructor(Builder) {
+		Builder = Builder || {};
+		this._Builder = Builder;
+		this.payload = Builder.xml;
+		this.url = Builder.url;
 	}
 
-	participants(participants) {
-		// Pass the participants properties into a nested participants object
-		// {} => {particiants: {}}
-		return this._setPayload({participants});
-	}
-	metaData(metaData) {
-		return this._setPayload({metaData});
-	}
-	accessControl(accessControl) {
-		return this._setPayload({accessControl});
-	}
-	enableOptions(enableOptions) {
-		return this._setPayload({enableOptions});
-	}
-	schedule(schedule) {
-		return this._setPayload({schedule});
-	}
-	telephony(telephony) {
-		return this._setPayload({telephony});
+	toBuilder() {
+		return this._Builder;
 	}
 
-	createMeeting() {
-		return this._send('CreateMeeting');
+	newBuilder() {
+		return new Client.Builder(this._Builder.creds, this._Builder.url);
 	}
 
-	_build(service) {
-		this.xmlPayload = this.payloadObject.xml(service);
-	}
-
-	_send(service) {
-		this._build(service);
-
+	exec() {
 		return fetch(this.url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'text/xml'
 			},
-			body: this.xmlPayload
+			body: this.payload
 		})
 		.then(checkStatus)
 		.then(r => r.text());
 	}
-};
+}
 
-function checkStatus(response) {
-	if (response.status >= 200 && response.status < 300) {
-		return response;
+// A typical builder fashion, with the exception of storing
+// raw data into a data store
+Client.Builder = class {
+	constructor(creds, url) {
+		this.creds = creds;
+		this.data = {};
+		this.xml = '';
+		this.url = url;
 	}
 
-	var error = new Error(response.statusText);
-	error.response = response;
-	throw error;
-}
+	participants(participants) {
+		// Pass the participants properties into a nested participants object
+		// {} => {particiants: {}}
+		this.data.participants = participants;
+		return this;
+	}
+	metaData(metaData) {
+		this.data.metaData = metaData;
+		return this;
+	}
+	accessControl(accessControl) {
+		this.data.accessControl = accessControl;
+		return this;
+	}
+	enableOptions(enableOptions) {
+		this.data.enableOptions = enableOptions;
+		return this;
+	}
+	schedule(schedule) {
+		this.data.schedule = schedule;
+		return this;
+	}
+	telephony(telephony) {
+		this.data.telephony = telephony;
+		return this;
+	}
+	setService(service) {
+		this.serviceName = service;
+		return this;
+	}
+
+	build() {
+		this.request = new XMLRequest(this.creds);
+		this.request.append(this.data);
+		this.xml = this.request.xml(this.serviceName);
+		return new Client(this);
+	}
+};
+
+module.exports = Client;

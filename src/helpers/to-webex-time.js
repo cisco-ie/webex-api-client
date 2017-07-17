@@ -1,4 +1,4 @@
-// TODO: Export to it's own module
+// TODO: use https://github.com/cisco-ie/webex-time when public
 const moment = require('moment');
 
 /**

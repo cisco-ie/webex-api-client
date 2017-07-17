@@ -3,11 +3,11 @@ const parsers = require('./parsers/index');
 const WEBEXSERVICE = require('./constants/webex-services');
 
 module.exports = class XMLRequest {
-	constructor(creds, body) {
+	constructor(creds) {
 		this.header = {
 			securityContext: parsers.securityContext(creds)
 		};
-		this.body = body || {};
+		this.body = {};
 	}
 
 	setSecurityContext(header) {
@@ -18,17 +18,23 @@ module.exports = class XMLRequest {
 		// Attempt to find a parser/validator
 		// Parse the object contents, then return
 		// the same key with the parsed object
-		const elementRoot = Object.keys(data)[0];
-		const element = data[elementRoot];
-		const parser = parsers[elementRoot];
+		const elementRoots = Object.keys(data);
 
-		if (parser) {
-			let parsedObj = {};
-			parsedObj[elementRoot] = parser(element);
-			return parsedObj;
-		}
+		// Reduce each property in the object to be passed through the
+		// parser
+		const parsed = elementRoots.reduce((acc, elementKey) => {
+			const element = data[elementKey];
+			const parser = parsers[elementKey];
+			if (parser) {
+				let parsedObj = {
+					[elementKey]: parser(element)
+				};
+				return Object.assign(acc, parsedObj);
+			}
+			return Object.assign(acc, {[elementKey]: element});
+		}, {});
 
-		return data;
+		return parsed;
 	}
 
 	append(object) {
@@ -49,13 +55,15 @@ module.exports = class XMLRequest {
 			throw new Error('Not a valid WebEx Service');
 		}
 
-		const body = {
-			bodyContent: {
-				$: {
-					'xsi:type': desiredService
-				},
-				body: this.body
+		const attr = {
+			$: {
+				'xsi:type': desiredService
 			}
+		};
+
+		const bodyContent = Object.assign({}, attr, this.body);
+		const body = {
+			bodyContent
 		};
 
 		const xmlObj = {

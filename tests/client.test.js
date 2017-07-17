@@ -15,33 +15,39 @@ nock('https://test.com')
 test('Create Meeting', async t => {
 	t.plan(1);
 
-	const webex = new Client({
+	const requestBuilder = new Client.Builder({
 		webExID: 'testuser',
 		password: 'password123',
 		siteId: 'tester'
 	}, TESTURL + '/webex');
 
-	try {
-		const resp = await webex
-			.metaData({
-				confName: 'Sample Meeting',
-				meetingType: 1,
-				agenda: 'Test'
-			})
-			.participants([
+	const webExMeeting = requestBuilder
+		.metaData({
+			confName: 'Sample Meeting',
+			meetingType: 1,
+			agenda: 'Test'
+		})
+		.participants({
+			maxUserNumber: 4,
+			attendees: [
 				{
 					name: 'James Kirk',
 					email: 'JKirk@sz.webex.com'
 				}
-			])
-			.schedule({
-				startDate: new Date(2004, 4, 31, 10, 10, 10),
-				openTime: 900,
-				joinTeleconfBeforeHost: true,
-				duration: 20,
-				timezoneID: 4
-			})
-			.createMeeting();
+			]
+		})
+		.schedule({
+			startDate: new Date(2004, 4, 31, 10, 10, 10),
+			openTime: 900,
+			joinTeleconfBeforeHost: true,
+			duration: 20,
+			timezoneID: 4
+		})
+		.setService('CreateMeeting')
+		.build();
+
+	try {
+		const resp = await webExMeeting.exec();
 
 		t.is(resp, '<Success />');
 	} catch (err) {
