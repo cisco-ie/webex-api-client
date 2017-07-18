@@ -14,9 +14,9 @@ test('DeleteMeeting', async t => {
 	t.plan(1);
 
 	const requestBuilder = new Client.Builder({
-			webExID: 'testuser',
-			password: 'password123',
-			siteId: 'tester'
+		webExID: 'testuser',
+		password: 'password123',
+		siteId: 'tester'
 	}, TESTURL + '/webex');
 
 	const deleteRequest = requestBuilder
@@ -26,7 +26,7 @@ test('DeleteMeeting', async t => {
 
 	try {
 		const resp = await deleteRequest.exec();
-		t.is(resp, '<Success />')
+		t.is(resp, '<Success />');
 	} catch (err) {
 		console.log(err);
 	}

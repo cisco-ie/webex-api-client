@@ -75,6 +75,10 @@ Client.Builder = class {
 		this.serviceName = service;
 		return this;
 	}
+	tracking(trackingList) {
+		this.data.tracking = trackingList;
+		return this;
+	}
 
 	build() {
 		this.request = new XMLRequest(this.creds);

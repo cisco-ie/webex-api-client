@@ -43,6 +43,7 @@ test('Create Meeting', async t => {
 			duration: 20,
 			timezoneID: 4
 		})
+		.tracking(['trackSig1', 'trackSig3'])
 		.setService('CreateMeeting')
 		.build();
 

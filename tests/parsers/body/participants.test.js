@@ -72,3 +72,26 @@ test('Validate role', t => {
 	}));
 	t.is(error.message, 'Expected a valid type (ATTENDEE, PRESENTER, HOST, LIMITED), received governer');
 });
+
+test('Validate email', t => {
+	const error = t.throws(() => participants({
+		attendees: [
+			{
+				role: 'governer'
+			}
+		]
+	}));
+	t.is(error.message, 'Expected email property for attendee: {\"role\":\"governer\"}'); // eslint-disable-line no-useless-escape
+});
+
+test('Validate personType', t => {
+	const error = t.throws(() => participants({
+		attendees: [
+			{
+				email: 'cool@beans.com',
+				type: 'universe'
+			}
+		]
+	}));
+	t.is(error.message, 'Expected a valid type (VISITOR, MEMBER, PANELIST, SME, SALESTEAM), received universe');
+});
