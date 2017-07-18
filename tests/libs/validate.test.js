@@ -1,5 +1,5 @@
 import test from 'ava';
-import validate from '../../libs/validate';
+import validate from '../../src/helpers/validate';
 
 test('Missing key throw error', t => {
 	const error = t.throws(() => validate({

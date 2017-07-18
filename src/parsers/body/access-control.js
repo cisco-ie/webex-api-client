@@ -1,10 +1,11 @@
 // Per Schema all elements are optional
-const xmlBuilder = require('../../libs/xml-builder')('accessControl');
-const validType = require('../../libs/valid-type');
-const validate = require('../../libs/validate');
-const LISTSTATUS = require('../../constants/list-status');
-const JOINSTATUS = require('../../constants/join-status');
-const REGSTATUS = require('../../constants/registration-status');
+const validType = require('../../helpers/valid-type');
+const validate = require('../../helpers/validate');
+const ENUMS = require('../../constants/enum-types');
+
+const LISTSTATUS = ENUMS.listStatus;
+const JOINSTATUS = ENUMS.joinStatus;
+const REGSTATUS = ENUMS.registrationStatus;
 
 /**
  * Creates a schedule XML
@@ -28,11 +29,11 @@ const REGSTATUS = require('../../constants/registration-status');
 module.exports = elements => {
 	validate(elements, ['registration']);
 
-	let eCopy = Object.assign({}, elements);
+	let elCopy = Object.assign({}, elements);
 
 	if (!elements.listStatus) {
 		// set to default public
-		eCopy = Object.assign({}, {listStatus: LISTSTATUS[0]});
+		elCopy = Object.assign({}, {listStatus: LISTSTATUS[0]});
 	}
 
 	if (elements.sessionPassword) {
@@ -59,5 +60,5 @@ module.exports = elements => {
 		validType(REGSTATUS, elements.registrationStatus);
 	}
 
-	return xmlBuilder.buildObject(eCopy);
+	return elCopy;
 };

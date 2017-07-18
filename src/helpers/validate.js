@@ -1,4 +1,3 @@
-// @TODO allow case insensitive
 // This function will return a list of required keys that are missing
 module.exports = (srcObj, keys) => {
 	// Show the ones that aren't available in the object

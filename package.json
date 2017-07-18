@@ -23,20 +23,21 @@
     "/libs"
   ],
   "keywords": [
-    "cli-app",
-    "cli",
-    ""
+    "webex",
+    "cisco client",
+    "webex API"
   ],
   "dependencies": {
-    "lodash.has": "^4.5.2",
+    "isomorphic-fetch": "^2.2.1",
     "lodash.mapkeys": "^4.6.0",
-    "meow": "^3.7.0",
+    "lodash.pick": "^4.4.0",
     "moment": "^2.18.1",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {
     "ava": "^0.17.0",
     "coveralls": "^2.11.12",
+    "nock": "^9.0.13",
     "nyc": "^10.0.0",
     "xo": "^0.17.0"
   },

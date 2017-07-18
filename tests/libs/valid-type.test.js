@@ -1,5 +1,5 @@
 import test from 'ava';
-import validType from '../../libs/valid-type';
+import validType from '../../src/helpers/valid-type';
 
 test('Valid Type', t => {
 	const validTypes = [1, 2, 3];

@@ -1,8 +1,9 @@
 // Per Schema all elements are optional
-const xmlBuilder = require('../../libs/xml-builder')('schedule');
-const toTime = require('../../libs/to-webex-time');
-const VALIDTONES = require('../../constants/entry-exit-tone');
-const validType = require('../../libs/valid-type');
+const toTime = require('../../helpers/to-webex-time');
+const ENUMS = require('../../constants/enum-types');
+const validType = require('../../helpers/valid-type');
+
+const ENTRYEXITTONES = ENUMS.entryExitTone;
 
 /**
  * Creates a schedule XML
@@ -24,18 +25,18 @@ const validType = require('../../libs/valid-type');
  * @param  {Number} elements.showFileInterVal
  * @param  {Bool} elements.firstAttendeeAsPresenter
  *
- * @return {[type]}          [description]
+ * @return {Object}          Parsed schedule object
  */
 module.exports = elements => {
-	const eCopy = Object.assign({}, elements);
+	let elCopy = Object.assign({}, elements);
 
 	if (elements.startDate) {
-		eCopy.startDate = toTime(elements.startDate);
+		elCopy.startDate = toTime(elements.startDate);
 	}
 
 	if (elements.entryExitTone) {
-		validType(VALIDTONES, elements.entryExitTone);
+		validType(ENTRYEXITTONES, elements.entryExitTone);
 	}
 
-	return xmlBuilder.buildObject(eCopy);
+	return elCopy;
 };
