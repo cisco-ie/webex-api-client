@@ -41,16 +41,6 @@ Client.Builder = class {
 		this.url = url;
 	}
 
-	participants(participants) {
-		// Pass the participants properties into a nested participants object
-		// {} => {particiants: {}}
-		this.data.participants = participants;
-		return this;
-	}
-	metaData(metaData) {
-		this.data.metaData = metaData;
-		return this;
-	}
 	accessControl(accessControl) {
 		this.data.accessControl = accessControl;
 		return this;
@@ -59,20 +49,34 @@ Client.Builder = class {
 		this.data.enableOptions = enableOptions;
 		return this;
 	}
-	schedule(schedule) {
-		this.data.schedule = schedule;
-		return this;
-	}
-	telephony(telephony) {
-		this.data.telephony = telephony;
+	metaData(metaData) {
+		this.data.metaData = metaData;
 		return this;
 	}
 	meetingKey(meetingKey) {
 		this.data.meetingKey = meetingKey;
 		return this;
 	}
+	participants(participants) {
+		// Pass the participants properties into a nested participants object
+		// {} => {particiants: {}}
+		this.data.participants = participants;
+		return this;
+	}
+	remind(remind) {
+		this.data.remind = remind;
+		return this;
+	}
+	schedule(schedule) {
+		this.data.schedule = schedule;
+		return this;
+	}
 	setService(service) {
 		this.serviceName = service;
+		return this;
+	}
+	telephony(telephony) {
+		this.data.telephony = telephony;
 		return this;
 	}
 	tracking(trackingList) {

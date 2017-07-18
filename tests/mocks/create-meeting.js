@@ -32,6 +32,13 @@ module.exports = `<?xml version="1.0" encoding="ISO-8859-1"?>
         <duration>20</duration>
         <timezoneID>4</timezoneID>
       </schedule>
+			<remind>
+				<emails>
+					<email>test@test.com</email>
+					<email>test2@test.com</email>
+				</emails>
+				<sendEmail>true</sendEmail>
+			</remind>
 			<tracking>
 				<trackingCode1>trackSig1</trackingCode1>
 				<trackingCode2>trackSig3</trackingCode2>

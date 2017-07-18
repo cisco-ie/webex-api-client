@@ -43,6 +43,10 @@ test('Create Meeting', async t => {
 			duration: 20,
 			timezoneID: 4
 		})
+		.remind({
+			emails: ['test@test.com', 'test2@test.com'],
+			sendEmail: true
+		})
 		.tracking(['trackSig1', 'trackSig3'])
 		.setService('CreateMeeting')
 		.build();

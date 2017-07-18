@@ -5,5 +5,6 @@ module.exports = {
 	securityContext: require('./header/security-context'),
 	supportCenter: require('./body/support-center'),
 	participants: require('./body/participants'),
-	tracking: require('./body/tracking')
+	tracking: require('./body/tracking'),
+	remind: require('./body/remind')
 };
