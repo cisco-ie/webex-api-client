@@ -67,6 +67,10 @@ Client.Builder = class {
 		this.data.telephony = telephony;
 		return this;
 	}
+	meetingKey(meetingKey) {
+		this.data.meetingKey = meetingKey;
+		return this;
+	}
 	setService(service) {
 		this.serviceName = service;
 		return this;
