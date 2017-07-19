@@ -46,6 +46,14 @@ Client.Builder = class {
 		this.data.accessControl = accessControl;
 		return this;
 	}
+	assistService(assistService) {
+		this.data.assistService = assistService;
+		return this;
+	}
+	attendeeOptions(attendeeOptions) {
+		this.data.attendeeOptions = attendeeOptions;
+		return this;
+	}
 	enableOptions(enableOptions) {
 		this.data.enableOptions = enableOptions;
 		return this;
