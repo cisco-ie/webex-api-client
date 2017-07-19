@@ -39,6 +39,7 @@ Client.Builder = class {
 		this.data = {};
 		this.xml = '';
 		this.url = url;
+		this.encoding = 'UTF-8';
 	}
 
 	accessControl(accessControl) {
@@ -75,6 +76,10 @@ Client.Builder = class {
 		this.serviceName = service;
 		return this;
 	}
+	setEncoding(encoding) {
+		this.encoding = encoding;
+		return this;
+	}
 	telephony(telephony) {
 		this.data.telephony = telephony;
 		return this;
@@ -87,7 +92,7 @@ Client.Builder = class {
 	build() {
 		this.request = new XMLRequest(this.creds);
 		this.request.append(this.data);
-		this.xml = this.request.xml(this.serviceName);
+		this.xml = this.request.xml(this.serviceName, this.encoding);
 		return new Client(this);
 	}
 };

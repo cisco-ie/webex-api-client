@@ -1,6 +1,8 @@
-const xmlBuilder = require('./xml-builder')('serv:message');
+const createBuilder = require('./xml-builder');
 const parsers = require('./parsers/index');
+const validType = require('./helpers/valid-type');
 const WEBEXSERVICE = require('./constants/webex-services');
+const ENCODINGS = require('./constants/xml-encodings');
 
 module.exports = class XMLRequest {
 	constructor(creds) {
@@ -49,7 +51,12 @@ module.exports = class XMLRequest {
 		};
 	}
 
-	xml(service) {
+	xml(service, encoding) {
+		if (encoding) {
+			validType(ENCODINGS, encoding);
+		}
+		const xmlBuilder = createBuilder('serv:message', encoding);
+
 		const desiredService = WEBEXSERVICE[service];
 		if (!desiredService) {
 			throw new Error('Not a valid WebEx Service');
