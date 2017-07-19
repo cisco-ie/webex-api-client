@@ -48,6 +48,7 @@ test('Create Meeting', async t => {
 			sendEmail: true
 		})
 		.tracking(['trackSig1', 'trackSig3'])
+		.setEncoding('ISO-8859-1')
 		.setService('CreateMeeting')
 		.build();
 

@@ -1,9 +1,7 @@
 // This returns a xml builder with our settings
 const xml2js = require('xml2js');
-// Settings
-const encoding = 'ISO-8859-1';
 
-module.exports = rootName => {
+module.exports = (rootName, encoding) => {
 	return new xml2js.Builder({
 		headless: false,
 		xmldec: {

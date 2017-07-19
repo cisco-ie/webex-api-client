@@ -1,4 +1,4 @@
-module.exports = `<?xml version="1.0" encoding="ISO-8859-1"?>
+module.exports = `<?xml version="1.0" encoding="UTF-8"?>
 <serv:message>
   <header>
     <securityContext>
