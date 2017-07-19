@@ -6,4 +6,4 @@ module.exports = response => {
 	var error = new Error(response.statusText);
 	error.response = response;
 	throw error;
-}
+};

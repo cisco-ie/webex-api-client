@@ -4,5 +4,7 @@ module.exports = {
 	schedule: require('./body/schedule'),
 	securityContext: require('./header/security-context'),
 	supportCenter: require('./body/support-center'),
-	participants: require('./body/participants')
+	participants: require('./body/participants'),
+	tracking: require('./body/tracking'),
+	remind: require('./body/remind')
 };
