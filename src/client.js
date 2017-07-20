@@ -72,6 +72,10 @@ Client.Builder = class {
 		this.data.participants = participants;
 		return this;
 	}
+	repeat(repeat) {
+		this.data.repeat = repeat;
+		return this;
+	}
 	remind(remind) {
 		this.data.remind = remind;
 		return this;

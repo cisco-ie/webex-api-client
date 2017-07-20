@@ -1,14 +1,22 @@
 import test from 'ava';
 import assistService from '../../../src/parsers/body/assist-service';
 
-test('Validate assistRequest', t => {
-		const error = t.throws(() =>
-			assistService({
-				assistRequest: 'Nonz'
-			})
-		);
+test('AssistService Parser', t => {
+	const result = assistService({
+		assistRequest: 'None'
+	});
 
-		t.is(error.message, 'Expected a valid type (None, Dry Run, Consult, Live Event Support, Audio Streaming, Video), received Nonz');
+	t.deepEqual(result, {assistRequest: 'None'});
+});
+
+test('Validate assistRequest', t => {
+	const error = t.throws(() =>
+		assistService({
+			assistRequest: 'Nonz'
+		})
+	);
+
+	t.is(error.message, 'Expected a valid type (None, Dry Run, Consult, Live Event Support, Audio Streaming, Video), received Nonz');
 });
 
 test('Validate assistConfirm', t => {
@@ -19,4 +27,4 @@ test('Validate assistConfirm', t => {
 	);
 
 	t.is(error.message, 'Expected a valid type (Pending, Confirmed, Cancelled), received Pendz');
-})
+});
