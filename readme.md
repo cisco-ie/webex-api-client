@@ -69,18 +69,18 @@ WebEx Security Context ([`securityContext`](https://developer.cisco.com/site/web
 ))
 
 #### serviceUrl
-
 **Type:** `string`
 
 The url for the WebEx service for the request to be sent to
+
+### build()
+Construct the final XML and returns a `Request`
 
 ## Builder XML WebEx Elements
 All XML WebEx elements are passed a JSON representation of the XML equivalent, please refer to the schemas provided for more details. To prevent deeply nested JSON, specific methods will document simpler expected structures that will be converted by the Builder.
 
 ### accessControl
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/accesscontrol.html)
-
-
 
 ### assistService
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/assistservice.html)
@@ -182,9 +182,6 @@ Any of the following encodings: 'UTF-8', 'ISO-8859-1', 'BIG5', 'Shift_JIS', 'EUC
 A matching WebEx service type, currently `webex-api-client` only supports the following:
 - 'CreateMeeting'
 - 'DelMeeting'
-
-## build()
-Construct the final XML and returns a `Request`
 
 ## Request
 ### exec()
