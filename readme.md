@@ -21,14 +21,14 @@ $ npm install --save webex-api-client
 const WebExClient = require('webex-api-client');
 const requestBuilder = new WebExClient.Builder;
 
-const credentials = {
+const securityContext = {
   webExId: 'Test User',
   password: 'pass123',
   siteId: 'mycompany'
 };
 
 const createMeeting = 
-  requestBuilder(credentials)
+  requestBuilder(securityContext, 'http://test.webex.com/api')
     .metaData({
       confName: 'Sample Meeting',
       meetingType: 1,
@@ -70,7 +70,7 @@ WebEx Security Context ([`securityContext`](https://developer.cisco.com/site/web
 
 #### serviceUrl
 
-Type: `string`
+**Type:** `string`
 
 The url for the WebEx service for the request to be sent to
 
@@ -79,24 +79,8 @@ All XML WebEx elements are passed a JSON representation of the XML equivalent, p
 
 ### accessControl
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/accesscontrol.html)
-#### XMLObj.attendees
-Type: `array` of [attendee](https://developer.cisco.com/site/webex-developer/develop-test/xml-api/schema/)
 
-##### Attendee
-- name
-- firstName
-- lastName
-- title
-- company
-- webExID
-- address
-- phones
-- email
-- notes
-- url
-- type
-- sendReminder
-- joinStatus
+
 
 ### assistService
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/assistservice.html)
@@ -116,11 +100,61 @@ Type: `array` of [attendee](https://developer.cisco.com/site/webex-developer/dev
 ### participants
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/participants.html)
 
+#### XMLObj.attendees
+**Type:** `array` of [attendee](https://developer.cisco.com/site/webex-developer/develop-test/xml-api/schema/) <br>
+**Example:** 
+
+```
+attendees: [
+	{
+		name: 'James Kirk',
+		email: 'Jkirk@sz.webex.com',
+		joinStatus: 'REGISTER'
+	},
+	{
+			email: 'Jdoe@sz.webex.com',
+			name: 'Jane Doe',
+			firstName: 'Jane',
+			lastName: 'Doe',
+			notes: 'Testing',
+			joinStatus: 'INVITE'
+		}
+]
+```
+
+##### Attendee Properties
+- name
+- firstName
+- lastName
+- title
+- company
+- webExID
+- address
+- phones
+- email
+- notes
+- url
+- type
+- sendReminder
+- joinStatus
+
 ### repeat
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/repeat.html)
 
+#### XMLObj.expirationDate
+**Type:** `Date`, RFC 2822, ISO-8601 <br>
+**Example:** `new Date()`
+
+#### XMLObj.dayInWeek
+**Type:** `Array` of Day <br>
+**Example:** `['MONDAY', 'TUESDAY', 'THURSDAY']`
+
 ### remind
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/remind.html)
+
+#### XMLObj.emails
+**Type:** `Array` of emails <br>
+**Example:** `['test@test.com', 'helloWorld@gmail.com']`
 
 ### schedule
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/schedule.html)
@@ -131,16 +165,19 @@ Type: `array` of [attendee](https://developer.cisco.com/site/webex-developer/dev
 ### tracking
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/tracking.html)
 
+#### XMLObj.tracking
+**Type:** `Array` of trackingCodes <br>
+**Example:** `['1', 'code231', 'code4516', '3']`
 
 ## XML Misc Options
 ### setEncoding(encoding)
 #### encoding
-Type: `ENUM`
+**Type:** `ENUM`
 
 Any of the following encodings: 'UTF-8', 'ISO-8859-1', 'BIG5', 'Shift_JIS', 'EUC-KR', 'GB2312'.
 
 ### setService(WebExService)
-Type: `ENUM`
+**Type:** `ENUM`
 
 A matching WebEx service type, currently `webex-api-client` only supports the following:
 - 'CreateMeeting'
