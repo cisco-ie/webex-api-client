@@ -106,19 +106,19 @@ All XML WebEx elements are passed a JSON representation of the XML equivalent, p
 
 ```
 attendees: [
-	{
-		name: 'James Kirk',
-		email: 'Jkirk@sz.webex.com',
-		joinStatus: 'REGISTER'
-	},
-	{
-			email: 'Jdoe@sz.webex.com',
-			name: 'Jane Doe',
-			firstName: 'Jane',
-			lastName: 'Doe',
-			notes: 'Testing',
-			joinStatus: 'INVITE'
-		}
+  {
+    name: 'James Kirk',
+    email: 'Jkirk@sz.webex.com',
+    joinStatus: 'REGISTER'
+  },
+  {
+    email: 'Jdoe@sz.webex.com',
+    name: 'Jane Doe',
+    firstName: 'Jane',
+    lastName: 'Doe',
+    notes: 'Testing',
+    joinStatus: 'INVITE'
+  }
 ]
 ```
 
