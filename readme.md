@@ -75,18 +75,62 @@ Type: `string`
 The url for the WebEx service for the request to be sent to
 
 ## Builder XML WebEx Elements
+All XML WebEx elements are passed a JSON representation of the XML equivalent, please refer to the schemas provided for more details. To prevent deeply nested JSON, specific methods will document simpler expected structures that will be converted by the Builder.
+
 ### accessControl
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/accesscontrol.html)
+#### XMLObj.attendees
+Type: `array` of [attendee](https://developer.cisco.com/site/webex-developer/develop-test/xml-api/schema/)
+
+##### Attendee
+- name
+- firstName
+- lastName
+- title
+- company
+- webExID
+- address
+- phones
+- email
+- notes
+- url
+- type
+- sendReminder
+- joinStatus
+
 ### assistService
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/assistservice.html)
+
 ### attendeeOptions
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/attendeeoptions.html)
+
 ### enableOptions
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/enableoptions.html)
+
 ### metaData
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/metadata.html)
+
 ### meetingKey
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/meetingkey.html)
+
 ### participants
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/participants.html)
+
 ### repeat
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/repeat.html)
+
 ### remind
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/remind.html)
+
 ### schedule
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/schedule.html)
+
 ### telephony
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/telephony.html)
+
 ### tracking
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/tracking.html)
+
 
 ## XML Misc Options
 ### setEncoding(encoding)
