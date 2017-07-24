@@ -1,7 +1,7 @@
 import test from 'ava';
 import repeat from '../../../src/parsers/body/repeat';
 
-test('Remind Parser', t => {
+test('Repeat Parser', t => {
 	const result = repeat({
 		dayInWeek: ['MONDAY', 'TUESDAY'],
 		interval: 4,

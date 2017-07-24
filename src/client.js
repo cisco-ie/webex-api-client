@@ -14,8 +14,10 @@ class Client {
 		return this._Builder;
 	}
 
-	newBuilder() {
-		return new Client.Builder(this._Builder.creds, this._Builder.url);
+	newBuilder(credentials, url) {
+		credentials = credentials || this._Builder.creds;
+		url = serviceUrl || this._Builder.url;
+		return new Client.Builder(credentials, url);
 	}
 
 	exec() {
@@ -54,8 +56,20 @@ Client.Builder = class {
 		this.data.attendeeOptions = attendeeOptions;
 		return this;
 	}
+	attendeeName(attendeeName) {
+		this.data.attendeeName = attendeeName;
+		return this;
+	}
 	enableOptions(enableOptions) {
 		this.data.enableOptions = enableOptions;
+		return this;
+	}
+	listMethod(listMethod) {
+		this.data.listMethd = listMethod;
+		return this;
+	}
+	order(order) {
+		this.data.order = order;
 		return this;
 	}
 	metaData(metaData) {
@@ -90,6 +104,10 @@ Client.Builder = class {
 	}
 	setEncoding(encoding) {
 		this.encoding = encoding;
+		return this;
+	}
+	sessionKey(sessionKey) {
+		this.data.sessionKey = sessionKey;
 		return this;
 	}
 	telephony(telephony) {
