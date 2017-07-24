@@ -2,6 +2,8 @@ const JAVAPREFIX = 'java:com.webex.service.binding';
 
 module.exports = {
 	CreateMeeting: `${JAVAPREFIX}.meeting.CreateMeeting`,
+	CreateTeleconferenceSession: `${JAVAPREFIX}.meeting.auo.CreateTeleconf
+erenceSession`,
 	DelMeeting: `${JAVAPREFIX}.meeting.DelMeeting`,
 	GethosturlMeeting: `${JAVAPREFIX}.meeting.GethosturlMeeting`,
 	GetjoinurlMeeting: `${JAVAPREFIX}.meeting.GetjoinurlMeeting`,

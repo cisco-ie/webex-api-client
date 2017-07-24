@@ -122,6 +122,11 @@ Client.Builder = class {
 		this.data.telephony = telephony;
 		return this;
 	}
+	teleconference(teleconference) {
+		// Not fully supported for the required properties
+		this.data.teleconference = teleconference;
+		return this;
+	}
 	tracking(trackingList) {
 		this.data.tracking = trackingList;
 		return this;

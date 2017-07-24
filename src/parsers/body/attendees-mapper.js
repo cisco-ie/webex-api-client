@@ -7,8 +7,9 @@ module.exports = attendees => {
 	assert(Array.isArray(attendees), 'Expected input to be an array ([attendee])');
 
 	return attendees.map(attendee => {
+			assert(attendee.email, 'Expected attendee to have email property defined')
 			return {
-				attendee: transformAttendee(attendee)
+				attendee
 			};
 	});
 };
