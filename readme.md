@@ -79,11 +79,17 @@ Construct the final XML and returns a `Request`
 ## Builder XML WebEx Elements
 All XML WebEx elements are passed a JSON representation of the XML equivalent, please refer to the schemas provided for more details. To prevent deeply nested JSON, specific methods will document simpler expected structures that will be converted by the Builder.
 
+#### Element Method Signature
+`Builder.elementName(XMLObj)`
+
 ### accessControl
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/accesscontrol.html)
 
 ### assistService
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/assistservice.html)
+
+### attendeeName
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/attendeename.html)
 
 ### attendeeOptions
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/attendeeoptions.html)
@@ -91,11 +97,30 @@ All XML WebEx elements are passed a JSON representation of the XML equivalent, p
 ### enableOptions
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/enableoptions.html)
 
+### listMethod
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/listmethod.html)
+
 ### metaData
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/metadata.html)
 
 ### meetingKey
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/meetingkey.html)
+
+### order(input)
+[XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/order.html)
+
+#### Input
+**Type:** `array` containing `{ orderBy: ENUM_VALUE, orderAD: ENUM_VALUE }`
+**Example:**
+```
+// Input Example
+[
+	{
+		orderBy: 'STATUS',
+		orderAD: 'ASC'
+	}
+]
+```
 
 ### participants
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/participants.html)
@@ -180,8 +205,15 @@ Any of the following encodings: 'UTF-8', 'ISO-8859-1', 'BIG5', 'Shift_JIS', 'EUC
 **Type:** `ENUM`
 
 A matching WebEx service type, currently `webex-api-client` only supports the following:
-- 'CreateMeeting'
-- 'DelMeeting'
+#### Meeting Service
+- `CreateMeeting`
+- `DelMeeting`
+- `GethosturlMeeting`
+- `GetjoinurlMeeting`
+- `GetMeeting`
+- `GetTeleconferenceSession`
+- `SetMeeting`
+- `LstsummaryMeeting`
 
 ## Request
 ### exec()
