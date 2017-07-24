@@ -16,7 +16,7 @@ class Client {
 
 	newBuilder(credentials, url) {
 		credentials = credentials || this._Builder.creds;
-		url = serviceUrl || this._Builder.url;
+		url = url || this._Builder.url;
 		return new Client.Builder(credentials, url);
 	}
 
