@@ -64,6 +64,14 @@ Client.Builder = class {
 		this.data.enableOptions = enableOptions;
 		return this;
 	}
+	fullAccessAttendees(attendees) {
+		this.data.fullAccessAttendees = attendees;
+		return this;
+	}
+	limitedAccessAttendees(attendees) {
+		this.data.limitedAccessAttendees = attendees;
+		return this;
+	}
 	listMethod(listMethod) {
 		this.data.listMethd = listMethod;
 		return this;
