@@ -25,8 +25,8 @@ test('Valid length', t => {
 });
 
 test('Valid tracking type', t => {
-	const errorType = t.throws(() => tracking([1, 3, 4, 'code1']));
-	t.is(errorType.message, 'Expected tracking item to be a string, received a number');
+	const errorType = t.throws(() => tracking([{}, 'code1']));
+	t.is(errorType.message, 'Expected tracking item to be a string, received a object');
 
 	const LONGER_STRING = 'Ppby2DgRz5O31cuDaYHiEUPHLHcEwenvuC8Ve2u4Z2knGb7Cie5wcS1j2rA2xsjBCsZ7YHsCrf5tpnQcgzJbaavOlWKDg0DrKoFG4MovenqvWSi51lUnUNHtvP6SoLM9u';
 	const errorLength = t.throws(() => tracking([LONGER_STRING]));

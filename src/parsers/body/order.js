@@ -10,6 +10,7 @@ module.exports = elements => {
 		throw new Error('Expected order to receive an array ([ {orderBy, orderAD}, {orderBy, orderAD} ])');
 	}
 	// Place into object { orderBy: [], orderAD: [] }
+	// Might need to look to see if order is dependent
 	return elements.reduce((acc, element) => {
 		if (element.orderBy) {
 			validType(ORDER_BY, element.orderBy);

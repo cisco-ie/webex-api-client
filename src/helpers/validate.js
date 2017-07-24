@@ -10,7 +10,7 @@ module.exports = (srcObj, keys, elementIn) => {
 
 	if (missingReqKeys.length > 0) {
 		const missingKeys = missingReqKeys.toString().replace(/,/g, ', ');
-		const errorMessage =`Missing required keys: ${missingKeys}`;
+		const errorMessage = `Missing required keys: ${missingKeys}`;
 		if (elementIn) {
 			throw new Error(`${errorMessage} in ${elementIn}`);
 		} else {

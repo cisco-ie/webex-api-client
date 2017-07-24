@@ -41,7 +41,7 @@ test('Create Teleconference Session', async t => {
 			}
 		])
 		.schedule({
-			startDate: new Date(2005, 3 , 18, 15, 8, 51),
+			startDate: new Date(2005, 3, 18, 15, 8, 51),
 			timeZoneID: 45,
 			entryExitTone: 'ANNOUNCENAME'
 		})

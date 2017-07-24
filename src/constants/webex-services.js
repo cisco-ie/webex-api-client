@@ -9,5 +9,6 @@ erenceSession`,
 	GetjoinurlMeeting: `${JAVAPREFIX}.meeting.GetjoinurlMeeting`,
 	GetMeeting: `${JAVAPREFIX}.meeting.GetMeeting`,
 	GetTeleconferenceSession: `${JAVAPREFIX}.meeting.auo.GetTeleconferenceSession`,
-	SetMeeting: `${JAVAPREFIX}.meeting.SetMeeting`
+	SetMeeting: `${JAVAPREFIX}.meeting.SetMeeting`,
+	LstsummaryMeeting: `${JAVAPREFIX}.meeting.LstsummaryMeeting`
 };

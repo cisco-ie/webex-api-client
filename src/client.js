@@ -72,8 +72,8 @@ Client.Builder = class {
 		this.data.limitedAccessAttendees = attendees;
 		return this;
 	}
-	listMethod(listMethod) {
-		this.data.listMethd = listMethod;
+	listControl(listControl) {
+		this.data.listControl = listControl;
 		return this;
 	}
 	order(order) {
