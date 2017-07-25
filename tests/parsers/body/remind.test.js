@@ -18,4 +18,10 @@ test('Remind Parser', t => {
 		},
 		sendEmail: true
 	});
+
+	// No emails should return same elements
+	const element = {
+		sendEmail: true
+	};
+	t.deepEqual(remind(element), element);
 });

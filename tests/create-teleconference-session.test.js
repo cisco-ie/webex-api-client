@@ -2,7 +2,7 @@ import test from 'ava';
 import nock from 'nock';
 
 import Client from '../src/client';
-import mock from './mocks/create-teleconference-session';
+import mock from './fixtures/create-teleconference-session';
 
 const TESTURL = 'https://test.com';
 

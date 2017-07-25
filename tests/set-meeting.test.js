@@ -2,7 +2,7 @@ import test from 'ava';
 import nock from 'nock';
 
 import Client from '../src/client';
-import mock from './mocks/set-meeting';
+import mock from './fixtures/set-meeting';
 
 const TESTURL = 'https://test.com';
 
@@ -36,7 +36,7 @@ test('SetMeeting Test', async t => {
 		.schedule({
 			startDate: new Date(2004, 5, 1, 23, 6, 27),
 			duration: 60,
-			timeZone: 'GMT-05:00, S. America Pacific (Bogota)',
+			timeZone: 'GMT-05:00, S. America Pacific (Bogota)'
 		})
 		.telephony({
 			numPhoneLines: 0,

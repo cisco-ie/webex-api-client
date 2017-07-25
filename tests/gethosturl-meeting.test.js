@@ -2,7 +2,7 @@ import test from 'ava';
 import nock from 'nock';
 
 import Client from '../src/client';
-import mock from './mocks/gethosturl-meeting';
+import mock from './fixtures/gethosturl-meeting';
 
 const TESTURL = 'https://test.com';
 
