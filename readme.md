@@ -5,10 +5,10 @@
 The nature of XML-based WebEx APIs requires the construction of many intricate XML elements, which can be tediuous to build in a robust, succient fashion. The `webex-api-client` alleviates these pain points through the `Builder` class by providing a flatter, more simplified object to be used for XML construction. In addition, the client offers some level of validation for enumerated types, required properties, and value constraints to help prevent malformed request prior to being sent to the WebEx services.
 
 **Nutshell Features:**
-- `Builder` to create complicated XML in a DRY, and partial application fashion
-- Some level of validation for XML values, constraints, and WebEx enumerated types
-- Built-in parsers that provide simpler, flatter objects to create heavily nested, and redudant XML trees
-- Robust and well-tested code, built with more than 95% coverage
+- ✅ `Builder` pattern to create complicated XML in a DRY, and partial application fashion
+- ✅ Some validation for XML values, constraints, and WebEx enumerated types to prevent poor request being sent
+- ✅ Built-in parsers that provide simpler, flatter objects to create heavily nested, and redudant XML trees
+- ✅ Robust and well-tested code built in a test-driven fashion with more than 95% coverage
 
 ## Install
 
