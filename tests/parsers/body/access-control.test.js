@@ -37,10 +37,10 @@ test('Validate join status', t => {
 	t.is(error.message, 'Expected a valid type (REGISTER, INVITE, REJECT, ACCEPT), received 111');
 
 	const errorReq = t.throws(() => accessControl({}));
-	t.is(errorReq.message, 'Missing required keys: registration');
+	t.is(errorReq.message, 'Missing required keys: registration in accessControl');
 });
 
 test('Validate required keys', t => {
 	const errorReq = t.throws(() => accessControl({}));
-	t.is(errorReq.message, 'Missing required keys: registration');
+	t.is(errorReq.message, 'Missing required keys: registration in accessControl');
 });

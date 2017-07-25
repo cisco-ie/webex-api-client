@@ -1,20 +1,9 @@
 import test from 'ava';
-import nock from 'nock';
-
 import Client from '../src/client';
-import mock from './mocks/create-meeting';
 
 const TESTURL = 'https://test.com';
 
-nock('https://test.com')
-	.post('/webex', mock)
-	.reply(200, '<Success />');
-
-// nock('http://localhost/path').post('').reply(200, 'hi');
-
-test('Create Meeting', async t => {
-	t.plan(1);
-
+test('Client toBuilder method', async t => {
 	const requestBuilder = new Client.Builder({
 		webExID: 'testuser',
 		password: 'password123',
@@ -27,36 +16,41 @@ test('Create Meeting', async t => {
 			meetingType: 1,
 			agenda: 'Test'
 		})
-		.participants({
-			maxUserNumber: 4,
-			attendees: [
-				{
-					name: 'James Kirk',
-					email: 'JKirk@sz.webex.com'
-				}
-			]
-		})
-		.schedule({
-			startDate: new Date(2004, 4, 31, 10, 10, 10),
-			openTime: 900,
-			joinTeleconfBeforeHost: true,
-			duration: 20,
-			timezoneID: 4
-		})
-		.remind({
-			emails: ['test@test.com', 'test2@test.com'],
-			sendEmail: true
-		})
-		.tracking(['trackSig1', 'trackSig3'])
-		.setEncoding('ISO-8859-1')
+		.meetingKey(123456)
 		.setService('CreateMeeting')
 		.build();
 
-	try {
-		const resp = await webExMeeting.exec();
+	const delMeetingBuilder = webExMeeting.toBuilder();
+	const delMeeting = delMeetingBuilder.setService('DelMeeting').build();
 
-		t.is(resp, '<Success />');
-	} catch (err) {
-		console.log(err);
-	}
+	t.is(delMeeting.payload, '<?xml version="1.0" encoding="UTF-8"?><serv:message><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent xsi:type="java:com.webex.service.binding.meeting.DelMeeting"><metaData><confName>Sample Meeting</confName><meetingType>1</meetingType><agenda>Test</agenda></metaData><meetingKey>123456</meetingKey></bodyContent></body></serv:message>');
+});
+
+test('Client newBuilder method', async t => {
+	const requestBuilder = new Client.Builder({
+		webExID: 'testuser',
+		password: 'password123',
+		siteId: 'tester'
+	}, TESTURL + '/webex');
+
+	const webExMeeting = requestBuilder
+		.metaData({
+			confName: 'Sample Meeting',
+			meetingType: 1,
+			agenda: 'Test'
+		})
+		.meetingKey(123456)
+		.setService('DelMeeting')
+		.build();
+
+	const newMeeting = webExMeeting
+		.newBuilder()
+		.metaData({
+			confName: 'Sample Meeting 2'
+		})
+		.setService('CreateMeeting')
+		.build();
+
+	// It should clear out the old elements and only contain the new metaData
+	t.is(newMeeting.payload, '<?xml version="1.0" encoding="UTF-8"?><serv:message><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent xsi:type="java:com.webex.service.binding.meeting.CreateMeeting"><metaData><confName>Sample Meeting 2</confName></metaData></bodyContent></body></serv:message>');
 });

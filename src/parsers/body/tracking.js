@@ -9,8 +9,10 @@ module.exports = elements => {
 	assert(elements.length < 11, `Expected tracking length to be 10 or less, received ${elements.length}`);
 
 	return elements.reduce((acc, value, index) => {
-		assert(typeof value === 'string', `Expected tracking item to be a string, received a ${typeof value}`);
-		assert(value.length < 129, `Expected tracking item to be 128 characters or less, received ${value.length} characters`);
+		assert(typeof value === 'string' || typeof value === 'number', `Expected tracking item to be a string or number, received a ${typeof value}`);
+		if (typeof value === 'string') {
+			assert(value.length < 129, `Expected tracking item to be 128 characters or less, received ${value.length} characters`);
+		}
 
 		const trackingCode = {
 			[`trackingCode${index + 1}`]: value

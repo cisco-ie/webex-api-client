@@ -64,8 +64,16 @@ Client.Builder = class {
 		this.data.enableOptions = enableOptions;
 		return this;
 	}
-	listMethod(listMethod) {
-		this.data.listMethd = listMethod;
+	fullAccessAttendees(attendees) {
+		this.data.fullAccessAttendees = attendees;
+		return this;
+	}
+	limitedAccessAttendees(attendees) {
+		this.data.limitedAccessAttendees = attendees;
+		return this;
+	}
+	listControl(listControl) {
+		this.data.listControl = listControl;
 		return this;
 	}
 	order(order) {
@@ -112,6 +120,11 @@ Client.Builder = class {
 	}
 	telephony(telephony) {
 		this.data.telephony = telephony;
+		return this;
+	}
+	teleconference(teleconference) {
+		// Not fully supported for the required properties
+		this.data.teleconference = teleconference;
 		return this;
 	}
 	tracking(trackingList) {

@@ -12,10 +12,6 @@ module.exports = class XMLRequest {
 		this.body = {};
 	}
 
-	setSecurityContext(header) {
-		this.header = header;
-	}
-
 	_validateAndTransform(data) {
 		// Attempt to find a parser/validator
 		// Parse the object contents, then return
@@ -59,7 +55,7 @@ module.exports = class XMLRequest {
 
 		const desiredService = WEBEXSERVICE[service];
 		if (!desiredService) {
-			throw new Error('Not a valid WebEx Service');
+			throw new Error(`Recieved ${service} as WebEx service, expected a valid service in order to build request.`);
 		}
 
 		const attr = {

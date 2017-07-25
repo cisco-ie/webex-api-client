@@ -2,7 +2,7 @@ import test from 'ava';
 import nock from 'nock';
 
 import Client from '../src/client';
-import mock from './fixtures/delete-meeting';
+import mock from './fixtures/get-meeting';
 
 const TESTURL = 'https://test.com';
 
@@ -10,7 +10,7 @@ nock('https://test.com')
 	.post('/webex', mock)
 	.reply(200, '<Success />');
 
-test('DeleteMeeting', async t => {
+test('GetMeeting', async t => {
 	t.plan(1);
 
 	const requestBuilder = new Client.Builder({
@@ -21,7 +21,7 @@ test('DeleteMeeting', async t => {
 
 	const deleteRequest = requestBuilder
 		.meetingKey(48591508)
-		.setService('DelMeeting')
+		.setService('GetMeeting')
 		.build();
 
 	try {
