@@ -121,13 +121,14 @@ Type: `array` of modified [attendee](#attendee)
 **Example:**
 ```
 [
-	{
-		orderBy: 'STATUS',
-		orderAD: 'DESC'
-	},
-	{
-		orderBy: 'HOSTNAME',
-		orderAD: 'ASC'
+  {
+    orderBy: 'STATUS',
+    orderAD: 'DESC'
+  },
+  {
+    orderBy: 'HOSTNAME',
+    orderAD: 'ASC'
+  }
 ]
 ```
 
@@ -143,13 +144,13 @@ Type: `array` of modified [attendee](#attendee)
 #### Input
 **Type:** `array` containing `{ orderBy: ENUM_VALUE, orderAD: ENUM_VALUE }`
 **Example:**
-```
+```js
 // Input Example
 [
-	{
-		orderBy: 'STATUS',
-		orderAD: 'ASC'
-	}
+  {
+    orderBy: 'STATUS',
+    orderAD: 'ASC'
+  }
 ]
 ```
 
@@ -160,7 +161,7 @@ Type: `array` of modified [attendee](#attendee)
 **Type:** `array` of modified [attendee](#attendee) <br>
 **Example:** 
 
-```
+```js
 attendees: [
   {
     name: 'James Kirk',
@@ -266,21 +267,23 @@ Executes the XML request and sends it to the `serviceUrl`
 Return to `Builder` retaining all elements used during construction
 
 **Example Usage:**
-```
+```js
 const WebExBuilder = Client.Builder(accessControl, 'http://test.webex.com/')
 const FirstMeeting = WebExBuilder
-												.metaData({
-													confName: 'First Meeting'
-												})
-												.schedule({
-													startDate: new Date(2017, 0, 20),
-													openTime: 100,
-													duration: 20
-												})
-												.setService('CreateMeeting')
-												.build();
+                      .metaData({
+                        confName: 'First Meeting'
+                      })
+                      .schedule({
+                        startDate: new Date(2017, 0, 20),
+                        openTime: 100,
+                        duration: 20
+                      })
+                      .setService('CreateMeeting')
+                      .build();
 										
-const SecondMeeting = CreateMeeting.toBuilder().metaData({ confName: 'Second Meeting' });
+const SecondMeeting = CreateMeeting
+                        .toBuilder()
+                        .metaData({ confName: 'Second Meeting' });
 
 // Create both meetings
 const f1Promise = FirstMeeting.exec();
@@ -288,33 +291,33 @@ const f2Promise = SecondMeeting.exec();
 
 // Log when both meetings are created
 Promise.all([f1Promise, f2Promise])
-	.then((responses) => { console.log('meetings created!') })
-	.catch(console.log);
+  .then((responses) => { console.log('meetings created!') })
+  .catch(console.log);
 ```
 
 ### newBuilder([securityContext, serviceUrl])
 Destroys the previous builder with all XML elements, and returns a new Builder object with the existing security context and service url set. This can be overridden by the optional parameters passed in.
 
 **Exmaple Usage:**
-```
+```js
 const WebExBuilder = Client.Builder(accessControl, 'http://test.webex.com/');
 const CreateMeeting = WebExBuilder
-												.metaData({
-													confName: 'First Meeting'
-												})
-												.schedule({
-													startDate: new Date(2017, 0, 20),
-													openTime: 100,
-													duration: 20
-												})
-												.setService('CreateMeeting')
-												.build();
+                        .metaData({
+                          confName: 'First Meeting'
+                        })
+                        .schedule({
+                          startDate: new Date(2017, 0, 20),
+                          openTime: 100,
+                          duration: 20
+                        })
+                        .setService('CreateMeeting')
+                        .build();
 
 const delMeeting = CreateMeeting
-										.newBuilder()
-										.meetingKey(12345)
-										.setService('DelMeeting')
-										.build();
+                    .newBuilder()
+                    .meetingKey(12345)
+                    .setService('DelMeeting')
+                    .build();
 
 delMeeting.exec();
 ```
