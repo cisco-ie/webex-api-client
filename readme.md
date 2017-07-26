@@ -282,8 +282,9 @@ const FirstMeeting = WebExBuilder
                       .build();
 										
 const SecondMeeting = CreateMeeting
-                        .toBuilder()
-                        .metaData({ confName: 'Second Meeting' });
+                      .toBuilder()
+                      .metaData({ confName: 'Second Meeting' })
+                      .build();
 
 // Create both meetings
 const f1Promise = FirstMeeting.exec();
