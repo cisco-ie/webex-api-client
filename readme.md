@@ -211,10 +211,10 @@ attendees: [
 *Not all required properties are validated* <br>
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/teleconference.html)
 
-### tracking
+### tracking(input)
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/tracking.html)
 
-#### XMLObj.tracking
+#### input
 **Type:** `Array` of trackingCodes <br>
 **Example:** `['1', 'code231', 'code4516', '3']`
 
