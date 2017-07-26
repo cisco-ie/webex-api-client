@@ -60,7 +60,7 @@ createMeeting
 ## Builder(securityContext, serviceUrl)
 `const Builder = new Client.Builder(securityContext, serviceUrl)`
 
-Returns a [request object}(#request) that is executed with `.exec()`
+Returns a [request object](#request) that is executed with `.exec()`
 
 #### securityContext
 
