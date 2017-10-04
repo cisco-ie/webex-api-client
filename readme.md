@@ -1,4 +1,4 @@
-# webex-api-client [![Build Status](https://travis-ci.org/brh55/webex-api-client.svg?branch=master)](https://travis-ci.org/brh55/webex-api-client) [![Coverage Status](https://coveralls.io/repos/github/brh55/webex-api-client/badge.svg?branch=master)](https://coveralls.io/github/brh55/webex-api-client?branch=master)
+# webex-api-client [![Build Status](https://travis-ci.org/cisco-ie/webex-api-client.svg?branch=master)](https://travis-ci.org/cisco-ie/webex-api-client) [![Coverage Status](https://coveralls.io/repos/github/cisco-ie/webex-api-client/badge.svg?branch=master)](https://coveralls.io/github/cisco-ie/webex-api-client?branch=master)
 
 > A node module to simplify interacting with Cisco WebEx XML-based APIs from the browser or server
 
