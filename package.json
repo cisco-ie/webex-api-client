@@ -1,12 +1,12 @@
 {
   "name": "webex-api-client",
-  "version": "0.0.0",
-  "description": "My sensational module",
+  "version": "0.1.0",
+  "description": "A node module to simplify interacting with Cisco WebEx XML-based APIs from the browser or server",
   "license": "MIT",
-  "repository": "brh55/webex-api-client",
+  "repository": "cisco-ie/webex-api-client",
   "author": {
     "name": "brh55",
-    "email": "brandonhim@live.com",
+    "email": "brhim@cisco.com",
     "url": "github.com/cisco-ie/webex-api-client"
   },
   "bin": "cli.js",
