@@ -8,12 +8,11 @@ module.exports = `<?xml version="1.0" encoding="UTF-8"?>
         </securityContext>
     </header>
     <body>
-        <bodyContent xsi:type="java:com.webex.service.binding.meeting.auo.CreateTeleconf
-erenceSession">
+        <bodyContent xsi:type="java:com.webex.service.binding.meeting.auo.CreateTeleconferenceSession">
             <accessControl>
                 <listStatus>PUBLIC</listStatus>
                 <sessionPassword>123456</sessionPassword>
-								<registration>true</registration>
+				<registration>true</registration>
             </accessControl>
             <metaData>
                 <confName>Sample Teleconference-only meeting</confName>
