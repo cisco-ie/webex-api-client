@@ -1,6 +1,6 @@
 {
   "name": "webex-api-client",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A node module to simplify interacting with Cisco WebEx XML-based APIs from the browser or server",
   "license": "MIT",
   "repository": "cisco-ie/webex-api-client",
@@ -9,6 +9,7 @@
     "email": "brhim@cisco.com",
     "url": "github.com/cisco-ie/webex-api-client"
   },
+  "main": "",
   "engines": {
     "node": ">=4"
   },
@@ -16,10 +17,7 @@
     "test": "xo && nyc ava"
   },
   "files": [
-    "index.js",
-    "/components",
-    "/constants",
-    "/libs"
+    "src/client.js"
   ],
   "keywords": [
     "webex",
