@@ -9,7 +9,6 @@
     "email": "brhim@cisco.com",
     "url": "github.com/cisco-ie/webex-api-client"
   },
-  "bin": "cli.js",
   "engines": {
     "node": ">=4"
   },
