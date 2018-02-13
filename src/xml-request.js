@@ -51,7 +51,14 @@ module.exports = class XMLRequest {
 		if (encoding) {
 			validType(ENCODINGS, encoding);
 		}
-		const xmlBuilder = createBuilder('serv:message', encoding);
+		const xmlBuilder = createBuilder(
+			{
+				'serv:message': {
+					$: {
+						'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance'
+					}
+				}
+			}, encoding);
 
 		const desiredService = WEBEXSERVICE[service];
 		if (!desiredService) {
@@ -65,9 +72,7 @@ module.exports = class XMLRequest {
 		};
 
 		const bodyContent = Object.assign({}, attr, this.body);
-		const body = {
-			bodyContent
-		};
+		const body = { bodyContent };
 
 		const xmlObj = {
 			header: this.header,
