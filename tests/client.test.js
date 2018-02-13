@@ -23,7 +23,7 @@ test('Client toBuilder method', async t => {
 	const delMeetingBuilder = webExMeeting.toBuilder();
 	const delMeeting = delMeetingBuilder.setService('DelMeeting').build();
 
-	t.is(delMeeting.payload, '<?xml version="1.0" encoding="UTF-8"?><serv:message><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent xsi:type="java:com.webex.service.binding.meeting.DelMeeting"><metaData><confName>Sample Meeting</confName><meetingType>1</meetingType><agenda>Test</agenda></metaData><meetingKey>123456</meetingKey></bodyContent></body></serv:message>');
+	t.is(delMeeting.payload, '<?xml version="1.0" encoding="UTF-8"?><serv:message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent xsi:type="java:com.webex.service.binding.meeting.DelMeeting"><metaData><confName>Sample Meeting</confName><meetingType>1</meetingType><agenda>Test</agenda></metaData><meetingKey>123456</meetingKey></bodyContent></body></serv:message>');
 });
 
 test('Client newBuilder method', async t => {
@@ -52,5 +52,5 @@ test('Client newBuilder method', async t => {
 		.build();
 
 	// It should clear out the old elements and only contain the new metaData
-	t.is(newMeeting.payload, '<?xml version="1.0" encoding="UTF-8"?><serv:message><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent xsi:type="java:com.webex.service.binding.meeting.CreateMeeting"><metaData><confName>Sample Meeting 2</confName></metaData></bodyContent></body></serv:message>');
+	t.is(newMeeting.payload, '<?xml version="1.0" encoding="UTF-8"?><serv:message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><header><securityContext><webExID>testuser</webExID><password>password123</password><siteId>tester</siteId></securityContext></header><body><bodyContent xsi:type="java:com.webex.service.binding.meeting.CreateMeeting"><metaData><confName>Sample Meeting 2</confName></metaData></bodyContent></body></serv:message>');
 });

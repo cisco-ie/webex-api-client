@@ -1,5 +1,5 @@
 module.exports = `<?xml version="1.0" encoding="UTF-8"?>
-<serv:message>
+<serv:message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <header>
         <securityContext>
             <webExID>testuser</webExID>
@@ -12,7 +12,7 @@ module.exports = `<?xml version="1.0" encoding="UTF-8"?>
             <accessControl>
                 <listStatus>PUBLIC</listStatus>
                 <sessionPassword>123456</sessionPassword>
-				<registration>true</registration>
+                <registration>true</registration>
             </accessControl>
             <metaData>
                 <confName>Sample Teleconference-only meeting</confName>

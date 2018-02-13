@@ -10,6 +10,10 @@ The nature of XML-based WebEx APIs requires the construction of many intricate X
 - ✅ Built-in parsers that provide simpler, flatter objects to create heavily nested, and redudant XML trees
 - ✅ Robust and well-tested code built in a test-driven fashion with more than 95% coverage
 
+> **Note:**
+> 
+> Not all WebEx services are completely supported by the client, refer to [Meeting Service](#meeting-service) for the available services. If there is something you would like to be added, submit a issue and we can consider it as a feature request, otherwise we are open to taking additional Pull Requests.
+
 ## Install
 
 ```
@@ -17,19 +21,38 @@ $ npm install --save webex-api-client
 ```
 
 ## Usage
-
+### Basic Usage: Get Site Information
 ```js
 const WebExClient = require('webex-api-client');
-const requestBuilder = new WebExClient.Builder;
-
 const securityContext = {
-  webExId: 'Test User',
+  webExID: 'Test User',
   password: 'pass123',
-  siteId: 'mycompany'
+  siteId: 'hello-world'
 };
 
+const requestBuilder = new WebExClient.Builder(securityContext, 'https://hello-world.webex.com/WBXService/XMLService');
+
+const getSite =
+   requestBuilder
+      .setService('GetSite')
+      .build();
+      
+getSite.exec().then(console.log) // XML WebEx Site Information
+```
+
+### Advance Usage: Create Meetings
+```js
+const WebExClient = require('webex-api-client');
+const securityContext = {
+  webExID: 'Test User',
+  password: 'pass123',
+  siteId: 'hello-world'
+};
+
+const requestBuilder = new WebExClient.Builder(securityContext, 'https://hello-world.webex.com/WBXService/XMLService');
+
 const createMeeting = 
-  requestBuilder(securityContext, 'http://test.webex.com/api')
+  requestBuilder
     .metaData({
       confName: 'Sample Meeting',
       meetingType: 1,
@@ -51,7 +74,7 @@ const createMeeting =
     .setService('CreateMeeting')
     .build();
 
-// Initiate meeting
+// Initiate meeting whenever you are ready
 createMeeting
   .exec()
   .then((resp) => console.log('success'));
@@ -258,6 +281,7 @@ A matching WebEx service type, currently `webex-api-client` only supports the fo
 - `GetTeleconferenceSession`
 - `SetMeeting`
 - `LstsummaryMeeting`
+- `GetSite`
 
 ## Request
 ### exec()
@@ -322,6 +346,15 @@ const delMeeting = CreateMeeting
 
 delMeeting.exec();
 ```
+
+## Related
+If you found this client useful, don't forget to star this repository and check other related open-source Cisco modules by the Innovation Edge team:
+
+- [cisco-tp-client](https://github.com/cisco-ie/cisco-tp-client) - A node API client to ease interactions with Cisco WebEx Telepresence-enabled endpoints / codecs.
+Add topics
+- [rrule-to-webex](https://github.com/cisco-ie/rrule-to-webex) - Converts a RRULE (iCalendar RFC-5545) to Cisco's WebEx recurrence repeat XML tree.
+- [webex-time-zones](https://github.com/cisco-ie/webex-time-zones) - 🌐 An enumerated list of Cisco WebEx supported time zones 
+- [webex-date](https://github.com/cisco-ie/webex-date) - 🕰 Convert a JavaScript date type, RFC 2822, ISO-8601 to the WebEx XML API supported format.
 
 ## License
 
