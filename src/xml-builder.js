@@ -13,7 +13,8 @@ module.exports = (root, encoding) => {
 	};
 
 	if (typeof root === 'object') {
-		// mock xmlbuilder which wraps it with the rootelement
+		// Mock the xmlBuilder if we receive a JS xml object for the root
+		// this will provide a function that will wrap it's initial object with the root
 		return {
 			buildObject: function (jsObject) {
 				const rootName = Object.keys(root)[0];
@@ -27,12 +28,12 @@ module.exports = (root, encoding) => {
 				return xmlBuilder.buildObject(newObject);
 			}
 		};
-	} else {
-		const xmlBuilder = new xml2js.Builder({
-			...options,
-			rootName: root
-		});
-
-		return xmlBuilder;
 	}
+
+	const xmlBuilder = new xml2js.Builder({
+		...options,
+		rootName: root
+	});
+
+	return xmlBuilder;
 };

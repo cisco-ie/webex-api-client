@@ -72,7 +72,9 @@ module.exports = class XMLRequest {
 		};
 
 		const bodyContent = Object.assign({}, attr, this.body);
-		const body = { bodyContent };
+		const body = {
+			bodyContent
+		};
 
 		const xmlObj = {
 			header: this.header,

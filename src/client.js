@@ -136,7 +136,6 @@ Client.Builder = class {
 		this.request = new XMLRequest(this.creds);
 		this.request.append(this.data);
 		this.xml = this.request.xml(this.serviceName, this.encoding);
-		console.log(this.xml);
 		return new Client(this);
 	}
 };
