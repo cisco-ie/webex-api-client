@@ -10,6 +10,10 @@ The nature of XML-based WebEx APIs requires the construction of many intricate X
 - ✅ Built-in parsers that provide simpler, flatter objects to create heavily nested, and redudant XML trees
 - ✅ Robust and well-tested code built in a test-driven fashion with more than 95% coverage
 
+> **Note:**
+> 
+> Not all WebEx services are completely supported by the client, refer to [Meeting Service](#meeting-service) for the available services. If there is something you would like to be added, submit a issue and we can consider it as a feature request, otherwise we are open to taking additional Pull Requests.
+
 ## Install
 
 ```
@@ -277,6 +281,7 @@ A matching WebEx service type, currently `webex-api-client` only supports the fo
 - `GetTeleconferenceSession`
 - `SetMeeting`
 - `LstsummaryMeeting`
+- `GetSite`
 
 ## Request
 ### exec()
