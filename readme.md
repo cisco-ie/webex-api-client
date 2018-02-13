@@ -347,6 +347,15 @@ const delMeeting = CreateMeeting
 delMeeting.exec();
 ```
 
+## Related
+If you found this client useful, don't forget to star this repository and check other related open-source Cisco modules by the Innovation Edge team:
+
+- [cisco-tp-client](https://github.com/cisco-ie/cisco-tp-client) - A node API client to ease interactions with Cisco WebEx Telepresence-enabled endpoints / codecs.
+Add topics
+- [rrule-to-webex](https://github.com/cisco-ie/rrule-to-webex) - Converts a RRULE (iCalendar RFC-5545) to Cisco's WebEx recurrence repeat XML tree.
+- [webex-time-zones](https://github.com/cisco-ie/webex-time-zones) - 🌐 An enumerated list of Cisco WebEx supported time zones 
+- [webex-date](https://github.com/cisco-ie/webex-date) - 🕰 Convert a JavaScript date type, RFC 2822, ISO-8601 to the WebEx XML API supported format.
+
 ## License
 
 MIT © [Cisco Innovation Edge](https://github.com/cisco-ie/webex-api-client)
