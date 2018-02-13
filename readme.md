@@ -17,19 +17,38 @@ $ npm install --save webex-api-client
 ```
 
 ## Usage
-
+### Basic Usage: Get Site Information
 ```js
 const WebExClient = require('webex-api-client');
-const requestBuilder = new WebExClient.Builder;
-
 const securityContext = {
-  webExId: 'Test User',
+  webExID: 'Test User',
   password: 'pass123',
-  siteId: 'mycompany'
+  siteId: 'hello-world'
 };
 
+const requestBuilder = new WebExClient.Builder(securityContext, 'https://hello-world.webex.com/WBXService/XMLService');
+
+const getSite =
+   requestBuilder
+      .setService('GetSite')
+      .build();
+      
+getSite.exec().then(console.log) // XML WebEx Site Information
+```
+
+### Advance Usage: Create Meetings
+```js
+const WebExClient = require('webex-api-client');
+const securityContext = {
+  webExID: 'Test User',
+  password: 'pass123',
+  siteId: 'hello-world'
+};
+
+const requestBuilder = new WebExClient.Builder(securityContext, 'https://hello-world.webex.com/WBXService/XMLService');
+
 const createMeeting = 
-  requestBuilder(securityContext, 'http://test.webex.com/api')
+  requestBuilder
     .metaData({
       confName: 'Sample Meeting',
       meetingType: 1,
@@ -51,7 +70,7 @@ const createMeeting =
     .setService('CreateMeeting')
     .build();
 
-// Initiate meeting
+// Initiate meeting whenever you are ready
 createMeeting
   .exec()
   .then((resp) => console.log('success'));
