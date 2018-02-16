@@ -27,7 +27,7 @@ const WebExClient = require('webex-api-client');
 const securityContext = {
   webExID: 'Test User',
   password: 'pass123',
-  siteId: 'hello-world'
+  siteName: 'hello-world'
 };
 
 const requestBuilder = new WebExClient.Builder(securityContext, 'https://hello-world.webex.com/WBXService/XMLService');
@@ -91,6 +91,8 @@ Type: `object`
 
 WebEx Security Context ([`securityContext`](https://developer.cisco.com/site/webex-developer/develop-test/xml-api/schema/
 ))
+
+<img src="https://user-images.githubusercontent.com/6020066/36329730-db307886-131b-11e8-8be1-c060e69921f9.png" height="280"/>
 
 #### serviceUrl
 **Type:** `string`
