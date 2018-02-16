@@ -12,7 +12,7 @@ The nature of XML-based WebEx APIs requires the construction of many intricate X
 
 > **Note:**
 > 
-> Not all WebEx services are completely supported by the client, refer to [Meeting Service](#meeting-service) for the available services. If there is something you would like to be added, submit a issue and we can consider it as a feature request, otherwise we are open to taking additional Pull Requests.
+> Not all WebEx services are completely supported by the client, refer to [Meeting Service](#meeting-service) for the available services. If there is something you would like to be added, submit a issue and we can consider it as a feature request developed by our team, otherwise we are open to taking additional Pull Requests for additional features :).
 
 ## Install
 
