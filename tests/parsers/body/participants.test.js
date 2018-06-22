@@ -24,7 +24,8 @@ test('Participants Parser', t => {
 	t.deepEqual(parsed, {
 		maxUserNumber: 4,
 		attendees: {
-				attendee: [{
+			attendee: [
+				{
 					person: {
 						name: 'James Kirk',
 						email: 'Jkirk@sz.webex.com'
@@ -40,8 +41,9 @@ test('Participants Parser', t => {
 						notes: 'Testing'
 					},
 					joinStatus: 'INVITE'
-				}]
-		    }
+				}
+			]
+		}
 	});
 });
 
