@@ -1,6 +1,6 @@
 {
   "name": "webex-api-client",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A node module to simplify interacting with Cisco WebEx XML-based APIs from the browser or server",
   "license": "MIT",
   "repository": "cisco-ie/webex-api-client",
