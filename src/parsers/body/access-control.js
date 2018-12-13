@@ -27,14 +27,9 @@ const REGSTATUS = ENUMS.registrationStatus;
  * @return {String}          accessControl XML
  */
 module.exports = elements => {
-	validate(elements, ['registration'], 'accessControl');
+	validate(elements, [], 'accessControl');
 
 	let elCopy = Object.assign({}, elements);
-
-	if (!elements.listStatus) {
-		// set to default public
-		elCopy = Object.assign({}, {listStatus: LISTSTATUS[0]});
-	}
 
 	if (elements.sessionPassword) {
 		if (elements.sessionPassword.length > 16) {
@@ -48,16 +43,8 @@ module.exports = elements => {
 		}
 	}
 
-	if (elements.listStatus) {
-		validType(LISTSTATUS, elements.listStatus);
-	}
-
 	if (elements.joinStatus) {
 		validType(JOINSTATUS, elements.joinStatus);
-	}
-
-	if (elements.registrationStatus) {
-		validType(REGSTATUS, elements.registrationStatus);
 	}
 
 	return elCopy;
