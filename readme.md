@@ -2,6 +2,10 @@
 
 > A node module to simplify interacting with Cisco WebEx XML-based APIs from the browser or server
 
+> *🚨 Disclaimer 🚨*
+>
+> This repository is no longer being actively maintained, and is given to be used "as-is". However, the innovation edge team will continue to take additional pull-request for fixes or new features, but we appologize for the inconvenience.
+
 The nature of XML-based WebEx APIs requires the construction of many intricate XML elements, which can be tediuous to build in a robust, succinct fashion. The `webex-api-client` alleviates these pain points through a `Builder` that provides flatter and simplified objects to be used for XML construction. In addition, the client offers some level of validation for enumerated types, required properties, and value constraints to help prevent malformed request prior to being sent to the WebEx services.
 
 **Nutshell Features:**
