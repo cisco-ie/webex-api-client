@@ -48,6 +48,10 @@ Client.Builder = class {
 		this.data.accessControl = accessControl;
 		return this;
 	}
+	accessToken(accessToken) {
+		this.data.accessToken = accessToken;
+		return this;
+	}
 	assistService(assistService) {
 		this.data.assistService = assistService;
 		return this;
