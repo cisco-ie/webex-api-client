@@ -98,6 +98,24 @@ WebEx Security Context ([`securityContext`](https://developer.cisco.com/site/web
 
 <img src="https://user-images.githubusercontent.com/6020066/36329730-db307886-131b-11e8-8be1-c060e69921f9.png" height="280"/>
 
+#### Using a SessionTicket from Common Identity Webex Teams site
+
+First use an oauth2 flow from Webex Teams integration to obtain a token. This user will need to be an administrator of the webex meeting site. 
+
+Use that token below to get a session token from the webex meetings api. 
+
+```js
+const getSessionToken =
+   requestBuilder
+      .accessToken('token from common identity webex teams user, previously generated from oauth2 flow')
+      .setService('AuthenticateUser')
+      .build();
+
+getSessionToken.exec().then(console.log);
+```
+
+This token will be used as **sessionTicket** in the security context headers. 
+
 #### serviceUrl
 **Type:** `string`
 
@@ -229,7 +247,6 @@ attendees: [
 ### sessionKey
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/sessionkey.html)
 
-
 ### schedule
 [XML Schema](https://developer.cisco.com/media/webex-xml-api-schemas-update/schedule.html)
 
@@ -329,7 +346,7 @@ Promise.all([f1Promise, f2Promise])
 ### newBuilder([securityContext, serviceUrl])
 Destroys the previous builder with all XML elements, and returns a new Builder object with the existing security context and service url set. This can be overridden by the optional parameters passed in.
 
-**Exmaple Usage:**
+**Example Usage:**
 ```js
 const WebExBuilder = Client.Builder(accessControl, 'http://test.webex.com/');
 const CreateMeeting = WebExBuilder
