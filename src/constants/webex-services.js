@@ -10,5 +10,6 @@ module.exports = {
 	GetTeleconferenceSession: `${JAVAPREFIX}.meeting.auo.GetTeleconferenceSession`,
 	SetMeeting: `${JAVAPREFIX}.meeting.SetMeeting`,
 	LstsummaryMeeting: `${JAVAPREFIX}.meeting.LstsummaryMeeting`,
-	GetSite: `${JAVAPREFIX}.site.GetSite`
+	GetSite: `${JAVAPREFIX}.site.GetSite`,
+	AuthenticateUser: `${JAVAPREFIX}.user.AuthenticateUser`
 };

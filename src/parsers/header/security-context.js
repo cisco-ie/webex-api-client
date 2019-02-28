@@ -4,6 +4,8 @@
 // create note about passwords in clear text should be done through HTTPS
 // LINK: https://developer.cisco.com/site/webex-developer/develop-test/xml-api/api-guide/#global-request-elements-in-security-context
 
+//TODO: add body validation to allow AuthenticateUser service without password or sessionTicket in header
+
 const mapKeys = require('lodash.mapkeys');
 
 /**
